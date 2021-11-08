@@ -10,7 +10,8 @@ const server = new ApolloServer({
   context: {
     books,
     products,
-    categories
+    categories,
+    reviews
   }
 });
 
