@@ -77,10 +77,15 @@ exports.typeDefs = gql`
     productId: String!
   }
 
+  input UpdateCat {
+    name: String! 
+  }
+
   type Mutation {
     addC(input: AddCat!): Category!
     addP(input: AddProduct!): Product!
     addR(input: AddReview!): Review!
     deleteC(id: ID!): Boolean
+    updateC(id: ID!, input: UpdateCat!): Category!
   }
 `;

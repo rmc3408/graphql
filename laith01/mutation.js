@@ -37,4 +37,12 @@ exports.Mutation = {
     reviews.push(newR);
     return newR;
   },
+  updateC: (parent, { id, input }, { categories }) => {
+    const idx = categories.findIndex((cat) => cat.id === id);
+    categories[idx] = {
+      ...categories[idx],
+      ...input
+    }
+    return categories[idx];
+  }
 };
