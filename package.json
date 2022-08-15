@@ -1,0 +1,30 @@
+{
+  "name": "graphql-luiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmc3408/graphql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmc3408/graphql/issues"
+  },
+  "homepage": "https://github.com/rmc3408/graphql#readme",
+  "dependencies": {
+    "apollo-server": "^3.10.1",
+    "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
+}
