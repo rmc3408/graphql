@@ -1,0 +1,21 @@
+query GET_BOOKS {
+  books {
+    title
+    id
+  }
+  getFirstBook {
+    title
+    price
+  }
+  getFirstTitle
+  getTags
+}
+
+query GET_USERS {
+  getUser {
+    userName
+  }
+  getUsers {
+    id
+  }
+}
