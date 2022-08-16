@@ -9,10 +9,11 @@ export const postTypeDefs = gql`
     indexRef: Int!
     createdAt: String!
     #user: User!
+    unixTimestamp: String!
   }
 
   extend type Query {
     getPost(id: ID!): Post!
-    getPosts: [Post!]!
+    getPosts(input: filterInput): [Post!]!
   }
 `;

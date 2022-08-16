@@ -13,6 +13,6 @@ export const userTypeDefs = gql`
 
   extend type Query {
     getUser(id: ID!): User!
-    getUsers: [User!]!
+    getUsers(input: filterInput): [User!]!
   }
 `;

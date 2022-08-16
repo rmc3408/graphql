@@ -4,6 +4,7 @@ import { userResolvers } from './user/resolvers';
 import { userTypeDefs } from './user/type';
 import { postResolvers } from './post/resolvers';
 import { postTypeDefs } from './post/type';
+import { filterTypeDefs } from './filter/type';
 
 const rootTypeDefs = gql`
   type Query {
@@ -22,6 +23,7 @@ export const typeDefs = [
   userTypeDefs,
   bookTypeDefs,
   postTypeDefs,
+  filterTypeDefs,
 ];
 
 export const resolvers = [

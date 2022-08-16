@@ -19,3 +19,80 @@ query GET_USERS {
     id
   }
 }
+
+query GET_USERS($id: ID!) {
+  getUser(id: $id) {
+    id
+    firstName
+    lastName
+    userName
+    indexRef
+    createdAt
+  }
+  getUsers {
+    firstName
+  }
+}
+
+query GET_POSTS {
+  getPost(id: "861") {
+    id
+    title
+    userId
+    indexRef
+  }
+  getUser(id: "115") {
+    id
+    firstName
+    indexRef
+  }
+}
+
+query ExampleQuery {
+  p342: getPost(id: "342") {
+    id
+    postID: id
+    unixTimestamp
+  }
+  p860: getPost(id: "860") {
+    id
+    unixTimestamp
+  }
+}
+
+fragment mypost on Post {
+    postID: id
+    title
+    body
+    userId
+    unixTimestamp
+}
+
+query ExampleQuery {
+  p342: getPost(id: "342") {
+    ...mypost
+  }
+  p860: getPost(id: "860") {
+    ...mypost
+  }
+  p783: getPost(id: "783") {
+    ...mypost
+  }
+}
+
+query GET_USERS_FILTERED(
+  $sort: String,
+  $limit: Int,
+  $start: Int,
+  $order: String
+  ) {
+  getUsers(input: {
+    _sort: $sort
+    _limit: $limit
+    _start: $start,
+    _order: $order
+  }) {
+    id
+    userName
+  }
+}
