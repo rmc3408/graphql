@@ -36,3 +36,18 @@ export const mockUser = [
     tags: ['drink'],
   },
 ];
+
+export const mockPost = [
+  {
+    id: 'post-9384nf8410',
+    title: 'Dune',
+  },
+  {
+    id: 'post-mf803nd910',
+    title: 'HitchHiker',
+  },
+  {
+    id: 'post-0000182310',
+    title: 'Continnum',
+  },
+];
