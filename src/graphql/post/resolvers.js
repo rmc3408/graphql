@@ -1,8 +1,14 @@
-import { mockPost } from '../mockData';
+//import { mockPost } from '../mockData';
 
 export const postResolvers = {
   Query: {
-    getPost: () => mockPost[0],
-    getPosts: () => mockPost,
+    getPost: async (parent, args, context, info) => {
+      const data = await context.fetchPosts('/' + args.id);
+      return data.json();
+    },
+    getPosts: async (parent, args, context, info) => {
+      const data = await context.fetchPosts();
+      return data.json();
+    },
   },
 };

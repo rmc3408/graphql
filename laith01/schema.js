@@ -59,6 +59,7 @@ exports.typeDefs = gql`
   input AddCat {
     name: String! 
   }
+  
   input AddProduct {
     name: String!
     description: String

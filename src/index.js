@@ -1,13 +1,16 @@
-const { ApolloServer } = require('apollo-server');
-const {
+import { ApolloServer } from 'apollo-server';
+import {
   ApolloServerPluginLandingPageLocalDefault,
-} = require('apollo-server-core');
+} from 'apollo-server-core';
+import { context } from './graphql/context';
+
 
 import { typeDefs, resolvers } from './graphql/schema';
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context,
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],

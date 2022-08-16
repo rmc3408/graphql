@@ -23,6 +23,7 @@ export const typeDefs = [
   bookTypeDefs,
   postTypeDefs,
 ];
+
 export const resolvers = [
   rootResolvers,
   userResolvers,
