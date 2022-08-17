@@ -32,13 +32,17 @@ export const postResolvers = {
       return data.json();
     },
   },
-  // Post: {
-  //   unixTimestamp: (parent, args, context, info) => {
-  //     //console.log(parent.createdAt);
-  //     const newTime = new Date(parent.createdAt).getSeconds();
-  //     return newTime;
-  //   },
-  // },
+  Post: {
+    unixTimestamp: (parent, args, context, info) => {
+      //console.log(parent.createdAt);
+      const newTime = new Date(parent.createdAt).getSeconds();
+      return newTime;
+    },
+    user: async (parent, args, context, info) => {
+      const data = await context.fetchUsers('/' + parent.userId);
+      return data.json();
+    },
+  },
   // PostResult: {
   //   __resolveType: (obj) => {
   //     if (typeof obj.postId !== 'undefined') return "PostNotfoundError";

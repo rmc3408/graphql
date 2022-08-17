@@ -8,8 +8,8 @@ export const postTypeDefs = gql`
     userId: String!
     indexRef: Int!
     createdAt: String!
-    #user: User!
-    #unixTimestamp: String!
+    user: User!
+    unixTimestamp: String!
   }
 
   extend type Query {
