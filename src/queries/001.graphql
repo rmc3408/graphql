@@ -96,3 +96,30 @@ query GET_USERS_FILTERED(
     userName
   }
 }
+{
+  "limit": 5,
+  "sort": "userName",
+  "start": 0,
+  "order": "DESC"
+}
+
+query ExampleQuery {
+  getPost(id: "342") {
+    __typename
+    ... on Post {
+      id
+      title
+    }
+    ... on PostError {
+      statusCode
+      message
+      ... on PostNotfoundError {
+        postId
+      }
+      ... on PostTimeOutError {
+        timeout
+      }
+    }
+  }
+}
+
