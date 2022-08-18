@@ -1,11 +1,14 @@
 import fetch from 'node-fetch';
-
-const USERS_URL = 'http://localhost:3000/users'
-const POSTS_URL = 'http://localhost:3000/posts'
+import { postDataLoader } from './post/dataloaders';
+import { getPosts } from './post/utils';
+import { userDataLoader } from './user/dataloaders';
+import { getUsers } from './user/utils';
 
 export const context = () => {
   return {
-    fetchUsers: (id = "") => fetch(USERS_URL + id),
-    fetchPosts: (id = "") => fetch(POSTS_URL + id)
+    userDataLoader: userDataLoader(getUsers(fetch)),
+    postDataLoader: postDataLoader(getPosts(fetch)),
+    fetchUsers: getUsers(fetch),
+    fetchPosts: getPosts(fetch)
   };
 };

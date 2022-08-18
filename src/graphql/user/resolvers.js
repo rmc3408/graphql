@@ -16,4 +16,11 @@ export const userResolvers = {
       return data.json();
     },
   },
+  User: {
+    posts: async (parent, args, context, info) => {
+      const loaderData = await context.postDataLoader.load(parent.id); //Remove from array.
+      //still receive array of posts per user
+      return loaderData;
+    },
+  },
 };

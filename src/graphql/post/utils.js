@@ -1,0 +1,1 @@
+export const getPosts = (fetch) => (path = "") => fetch(process.env.POSTS_URL + path)

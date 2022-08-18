@@ -1,5 +1,6 @@
 //import { mockPost } from '../mockData';
 
+
 export const postResolvers = {
   Query: {
     getPost: async (parent, args, context, info) => {
@@ -39,8 +40,13 @@ export const postResolvers = {
       return newTime;
     },
     user: async (parent, args, context, info) => {
-      const data = await context.fetchUsers('/' + parent.userId);
-      return data.json();
+    
+      // const response = await context.fetchUsers('/' + parent.userId);
+      // return response.json()
+      
+      const loaderData = await context.userDataLoader.load(parent.userId); //Remove from array
+      //console.log(typeof loaderData) //STRING or OBJECT
+      return loaderData;
     },
   },
   // PostResult: {
@@ -59,3 +65,5 @@ export const postResolvers = {
   //   },
   // },
 };
+
+
