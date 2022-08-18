@@ -100,7 +100,7 @@ query GET_USERS_FILTERED(
   "limit": 5,
   "sort": "userName",
   "start": 0,
-  "order": "DESC"
+  "order": DESC
 }
 
 query ExampleQuery {
@@ -123,3 +123,15 @@ query ExampleQuery {
   }
 }
 
+query GET_POSTS {
+  getPosts(input: { 
+    _sort: "indexRef"
+    _order: ASC
+    _start: 0
+    _limit: 7
+  }) {
+    id
+    userId
+    indexRef
+  }
+}

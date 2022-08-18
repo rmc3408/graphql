@@ -1,0 +1,34 @@
+query POSTS_AND_HIS_USER {
+  getPosts {
+    id
+    title
+    user {
+      userName
+    }
+  }
+}
+
+query USERS_AND_ALLPOSTS {
+  getUsers {
+    id
+    firstName
+    posts {
+      id
+      title
+    }
+  }
+}
+
+query USER_AND_ALLPOSTS {
+  getUser(id: "903") {
+    id
+    firstName
+    posts {
+      id
+      title
+      user {
+        userName
+      }
+    }
+  }
+}
