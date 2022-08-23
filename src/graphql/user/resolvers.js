@@ -18,8 +18,10 @@ export const userResolvers = {
   },
   User: {
     posts: async (parent, args, context, info) => {
-      const loaderData = await context.postDataLoader.load(parent.id); //Remove from array.
+      //const loaderData = await context.postDataLoader.load(parent.id); //Remove from array.
       //still receive array of posts per user
+      const loaderData = await context.dataSources.postApi.dataloader.load(parent.id)
+      //const loaderData = await context.dataSources.postApi.
       return loaderData;
     },
   },

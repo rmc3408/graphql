@@ -3,6 +3,7 @@ import {
   ApolloServerPluginLandingPageLocalDefault,
 } from 'apollo-server-core';
 import { context } from './graphql/context';
+import PostsApi from './graphql/post/datasources';
 
 
 import { typeDefs, resolvers } from './graphql/schema';
@@ -14,6 +15,9 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  dataSources: () => {
+    return { postApi: new PostsApi(), } 
+  },
 });
 
 // The `listen` method launches a web server.

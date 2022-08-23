@@ -4,8 +4,8 @@
 export const postResolvers = {
   Query: {
     getPost: async (parent, args, context, info) => {
-      const data = await context.fetchPosts('/' + args.id);
-      const convData = await data.json();
+      const data = await context.dataSources.postApi.getPost(args.id);
+      //const convData = await data.json();
       
       // if (Math.random() > 0.5) {
       //   return {
@@ -23,14 +23,15 @@ export const postResolvers = {
       //   };
       // }
 
-      return convData;
+      return data;
     },
     getPosts: async (parent, args, context, info) => {
       //console.log(args.input)
-      const filterArgsPosts = new URLSearchParams(args.input);
+      //const filterArgsPosts = new URLSearchParams(args.input);
       //console.log(filterArgsPosts.toString())
-      const data = await context.fetchPosts('/?' + filterArgsPosts);
-      return data.json();
+      //const data = await context.fetchPosts('/?' + filterArgsPosts);
+      const data = await context.dataSources.postApi.getPosts(args.input)      
+      return data;
     },
   },
   Post: {
