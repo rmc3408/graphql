@@ -4,9 +4,8 @@ import {
 } from 'apollo-server-core';
 import { context } from './graphql/context';
 import PostsApi from './graphql/post/datasources';
-
-
 import { typeDefs, resolvers } from './graphql/schema';
+import UsersApi from './graphql/user/datasources';
 
 const server = new ApolloServer({
   typeDefs,
@@ -16,7 +15,10 @@ const server = new ApolloServer({
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   dataSources: () => {
-    return { postApi: new PostsApi(), } 
+    return { 
+      postApi: new PostsApi(),
+      userApi: new UsersApi(),
+     } 
   },
 });
 
