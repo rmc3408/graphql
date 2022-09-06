@@ -16,23 +16,4 @@ export const postTypeDefs = gql`
     getPost(id: ID!): Post! #PostResult!
     getPosts(input: filterInput): [Post!]!
   }
-
-  # union PostResult = Post | PostNotfoundError | PostTimeOutError
-
-  # interface PostError {
-  #   statusCode: Int!
-  #   message: String!
-  # }
-
-  # type PostTimeOutError implements PostError {
-  #   statusCode: Int!
-  #   message: String!
-  #   timeout: Int!
-  # }
-
-  # type PostNotfoundError implements PostError {
-  #   statusCode: Int!
-  #   message: String!
-  #   postId: String!
-  # }
 `;

@@ -11,10 +11,10 @@ class PostsApi extends RESTDataSource {
       const data = await this.getPosts('?userId=' + urlQuery);
     
       const mappedUserIDS = ids.map((id)=> {
-        const matchedPost = data.filter(post => post.userId === id)
-        return matchedPost;
+        const matchedPosts = data.filter(post => post.userId === id)
+        return matchedPosts;
       })
-      console.log(urlQuery)
+      //console.log(urlQuery)
       return mappedUserIDS;
     })    
   }
