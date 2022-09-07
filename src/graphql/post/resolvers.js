@@ -20,6 +20,11 @@ export const postResolvers = {
       return loaderData;
     },
   },
+  Mutation: {
+    createPost: async (parent, args, context, info) => {
+      return context.dataSources.postApi.createPost(args.data)
+    }
+  }
 };
 
 

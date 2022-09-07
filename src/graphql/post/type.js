@@ -12,8 +12,18 @@ export const postTypeDefs = gql`
     unixTimestamp: String!
   }
 
+  input CreatePostInput {
+    title: String!
+    body: String!
+    userId: String!
+  }
+
   extend type Query {
     getPost(id: ID!): Post! #PostResult!
     getPosts(input: filterInput): [Post!]!
+  }
+
+  extend type Mutation {
+    createPost(data: CreatePostInput): Post!
   }
 `;

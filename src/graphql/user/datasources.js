@@ -13,7 +13,7 @@ class UsersApi extends RESTDataSource {
         const matchedID = data.find(user => user.id === id)
         return matchedID;
       })
-      console.log(urlQuery);
+      console.log('UserAPI call', urlQuery);
       return mappedIDS;
     })    
   }
