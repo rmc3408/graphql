@@ -42,3 +42,32 @@ const createPostInfo = async (values, dataSource) => {
     createdAt: new Date().toISOString(),
   };
 };
+
+
+export const updatingPostFunction = async (id, values, dataSource) => {
+  if (!id) {
+    throw new ValidationError('Missing post Id');
+  }
+
+  if (values?.userId) {
+    await userExists(values.userId, dataSource)
+  }
+
+  if (typeof values.title !== 'undefined' || typeof values.body !== 'undefined') {
+    if (values.title === '' || values.body === '') {
+      throw new ValidationError('Not accept empty in title or Body')
+    }
+  }
+
+  return await dataSource.patch(id, { ...values });
+};
+
+export const deletingPostFunction = async (id, dataSource) => {
+  if (!id) {
+    throw new ValidationError('Missing post Id');
+  }
+
+  const result = await dataSource.delete(id);
+  console.log(result)
+  return !!result;
+};

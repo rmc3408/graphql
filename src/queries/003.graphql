@@ -1,0 +1,59 @@
+mutation Mutation($patchPostId: ID!, $data: UpdatePostInput!) {
+  patchPost(id: $patchPostId, data: $data) {
+    title
+    body
+    indexRef
+    userId
+  }
+}
+
+mutation Mutation($deletePostId: ID!) {
+  deletePost(id: $deletePostId)
+}
+
+mutation Mutation($patchPostId: ID!, $data: UpdatePostInput!) {
+  patchPost(id: $patchPostId, data: $data) {
+    title
+    body
+    indexRef
+    userId
+  }
+}
+
+
+
+
+mutation PatchUser($patchUserId: ID!, $data: UpdateUserInput!) {
+  patchUser(id: $patchUserId, data: $data) {
+    firstName
+    lastName
+    userName
+    indexRef
+    id
+  }
+}
+
+mutation CreateUser($data: CreateUserInput) {
+  createUser(data: $data) {
+    firstName
+    lastName
+    userName
+    indexRef
+  }
+}
+
+mutation Mutation($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId)
+}
+
+{
+  "patchPostId": "601",
+  "patchUserId": "p3Frzrj",
+  "data": {
+    "firstName": "raphael",
+    "lastName": "coelho",
+    "userName": "rmc3408"
+  },
+  "deletePostId": "6001",
+  "deleteUserId": "p3Frzrj",
+}

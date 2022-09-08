@@ -23,6 +23,12 @@ export const postResolvers = {
   Mutation: {
     createPost: async (parent, args, context, info) => {
       return context.dataSources.postApi.createPost(args.data)
+    },
+    patchPost: async (parent, args, context, info) => {
+      return context.dataSources.postApi.updatePost(args.id, args.data)
+    },
+    deletePost: async (parent, args, context, info) => {
+      return context.dataSources.postApi.deletePost(args.id)
     }
   }
 };

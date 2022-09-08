@@ -18,6 +18,12 @@ export const postTypeDefs = gql`
     userId: String!
   }
 
+  input UpdatePostInput {
+    title: String
+    body: String
+    userId: String
+  }
+
   extend type Query {
     getPost(id: ID!): Post! #PostResult!
     getPosts(input: filterInput): [Post!]!
@@ -25,5 +31,7 @@ export const postTypeDefs = gql`
 
   extend type Mutation {
     createPost(data: CreatePostInput): Post!
+    patchPost(id: ID!, data: UpdatePostInput!): Post!
+    deletePost(id: ID!): Boolean!
   }
 `;

@@ -1,5 +1,6 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 import DataLoader from "dataloader";
+import { creatingUserFunction, updatingUserFunction, deletingUserFunction } from './utils'
 
 class UsersApi extends RESTDataSource {
   constructor() {
@@ -24,6 +25,18 @@ class UsersApi extends RESTDataSource {
 
   async getUser(id) {
     return this.get(id, undefined, { cacheOptions: { ttl: 60 }});
+  }
+
+  async createUser(data) {
+    return creatingUserFunction(data, this);
+  }
+
+  async updateUser(id, data) {
+    return updatingUserFunction(id, data, this);
+  }
+
+  async deleteUser(id) {
+    return deletingUserFunction(id, this);
   }
 }
 

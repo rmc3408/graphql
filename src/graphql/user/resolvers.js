@@ -16,4 +16,15 @@ export const userResolvers = {
       return loaderData;
     },
   },
+  Mutation: {
+    createUser: async (parent, args, context, info) => {
+      return context.dataSources.userApi.createUser(args.data)
+    },
+    patchUser: async (parent, args, context, info) => {
+      return context.dataSources.userApi.updateUser(args.id, args.data)
+    },
+    deleteUser: async (parent, args, context, info) => {
+      return context.dataSources.userApi.deleteUser(args.id)
+    }
+  }
 };
