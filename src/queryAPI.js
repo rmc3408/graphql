@@ -1,12 +1,15 @@
 // IIFE - This is just to user snippets on chrome and
 // make sure we won't have an error like:
 // Uncaught SyntaxError: Identifier 'createPost' 
+
+import fetch from 'node-fetch';
+
 // has already been declared
 (async () => {
   console.clear();
 
-  const createPost = async (variables) => {
-    const graphQLUrl = "http://localhost:4003/";
+  const execPost = async (variables) => {
+    const graphQLUrl = "http://localhost:4000/";
     const query = `
           mutation CREATE_POST(
             $title: String!
@@ -46,18 +49,11 @@
     return newPost1;
   };
 
-  const post1 = await createPost({
+  const result1 = await execPost({
     title: "title 1",
     body: "body 1",
     userId: "602",
   });
 
-  const post2 = await createPost({
-    title: "title 2",
-    body: "body 2",
-    userId: "",
-  });
-
-  console.log(post1);
-  console.log(post2);
+  console.log(result1);
 })();

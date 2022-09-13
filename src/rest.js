@@ -1,12 +1,9 @@
 import fetch from 'node-fetch'
 
 const API_URL = "http://localhost:3000/users"
-console.log(API_URL);
-
 
 const get = (endPoint, urlParam, requestInit = {}) => {
   const url = API_URL + '/' + endPoint + '?' + new URLSearchParams(urlParam).toString();
-  console.log(url)
   return fetch(url, {
     method: 'GET',
     headers: {

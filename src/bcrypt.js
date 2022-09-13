@@ -10,16 +10,16 @@ import jwt from 'jsonwebtoken';
 
   const passwordIsValid = await bcrypt.compare(secondPassword,passwordHash);
 
-  console.log('Is equal ',passwordIsValid);
+  console.log('Password between Hash and sent is equal =',passwordIsValid);
 })();
 
 (async () => {
   const JWT_SECRET = 'rmcSECRET';
 
-  let token = jwt.sign({ userId: 'Raphael' }, JWT_SECRET, { expiresIn: '2d' });
+  let token = jwt.sign({ userId: 'Raphael' }, JWT_SECRET, { expiresIn: '10s' });
   console.log('TOKEN ', token)
 
-  const delay = () => new Promise((r) => setTimeout(r, 5000));
+  const delay = () => new Promise((r) => setTimeout(r, 2000));
   await delay();
 
   const tokenData = jwt.verify(token, JWT_SECRET);
