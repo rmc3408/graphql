@@ -162,12 +162,21 @@
     },
     {
       "firstName": "Raphael",
-      "lastName": "Molinaro",
+      "lastName": "Molinaro Coelho",
       "userName": "rmc",
       "passwordHash": "$2b$04$QzpZURQ/QzW9EgmM29vYr.PbUyjmbeuRWgAiwq53OhVOLcEdp7Teu",
       "indexRef": 21,
       "createdAt": "2022-09-14T15:52:34.361Z",
       "id": "cg3z4uO"
+    },
+    {
+      "firstName": "Alessandro",
+      "lastName": "Santos",
+      "userName": "aleSantos3408",
+      "passwordHash": "$2b$04$eWQQXnsJAJmhJOdmUKuVru2bllHOa/mGJglVfcuvxKDeE/8sDF0j2",
+      "indexRef": 22,
+      "createdAt": "2022-09-14T22:34:40.728Z",
+      "id": "RchUvTu"
     }
   ],
   "posts": [

@@ -27,8 +27,3 @@ function createToken(data) {
   const newtoken = jwt.sign({ userId: data }, process.env.JWT_SECRET, { expiresIn: '1d' });
   return newtoken
 }
-
-function checkValidationToken(data) {
-  const tokenData = jwt.verify(data, process.env.JWT_SECRET);
-  return tokenData
-}

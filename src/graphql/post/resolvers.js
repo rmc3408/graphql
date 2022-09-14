@@ -6,7 +6,7 @@ export const postResolvers = {
       return data;
     },
     getPosts: async (parent, args, context, info) => {
-      const data = await context.dataSources.postApi.getPosts()      
+      const data = await context.dataSources.postApi.getPosts(args.input)      
       return data;
     },
   },

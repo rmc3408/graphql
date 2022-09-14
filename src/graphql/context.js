@@ -1,11 +1,10 @@
-import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
 
 export const context = ({ req }) => {
 
-  const loggedUserID = authorizingUser(req.headers.authorization || 'bearer  ');
+  const isLogIn = authorizingUser(req.headers.authorization || 'bearer  ');
   return {
-    loggedUserID,
+    isLogIn,
   };
 };
 
