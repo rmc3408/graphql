@@ -159,6 +159,15 @@
       "userName": "marcia_carvalho81",
       "indexRef": 1,
       "createdAt": "2016-12-08T00:49:39.870Z"
+    },
+    {
+      "firstName": "Raphael",
+      "lastName": "Molinaro",
+      "userName": "rmc",
+      "passwordHash": "$2b$04$QzpZURQ/QzW9EgmM29vYr.PbUyjmbeuRWgAiwq53OhVOLcEdp7Teu",
+      "indexRef": 21,
+      "createdAt": "2022-09-14T15:52:34.361Z",
+      "id": "cg3z4uO"
     }
   ],
   "posts": [

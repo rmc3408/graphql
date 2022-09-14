@@ -1,7 +1,8 @@
-import { ValidationError } from "apollo-server";
+import { UserInputError, ValidationError } from "apollo-server";
+import bcrypt from 'bcrypt';
 
 export const creatingUserFunction = async (values, dataSource) => {
-  checkUserFields(values, true);
+  await checkUserFields(values, true);
 
   const indexRefUser = await dataSource.get('', {
     _limit: 1,
@@ -34,6 +35,14 @@ const validateUserName = (userName) => {
   }
 };
 
+const validateUserPassword = (password) => {
+  const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{3,12}$/;
+
+  if(!password.match(passRegex)) {
+    throw new UserInputError('must have at least one number, one lowercase and one uppercase letter')
+  }
+};
+
 const userExists = async (userName, dataSource) => {
   // /users/?userName=nomeBuscado
   const found = await dataSource.get('', {
@@ -42,8 +51,8 @@ const userExists = async (userName, dataSource) => {
   return found[0];
 };
 
-const checkUserFields = (user, allFieldsRequired = false) => {
-  const userFields = ['firstName', 'lastName', 'userName'];
+const checkUserFields = async (user, allFieldsRequired = false) => {
+  const userFields = ['firstName', 'lastName', 'userName', 'password'];
 
   for (const field of userFields) {
     if (!allFieldsRequired) {
@@ -56,9 +65,22 @@ const checkUserFields = (user, allFieldsRequired = false) => {
       validateUserName(user[field]);
     }
 
+    if (field === 'password') {
+      validateUserPassword(user[field]);
+    }
+
     if (!user[field]) {
       throw new Error(`Missing ${field}`);
     }
+  }
+
+  if (user.password && !user.passwordHash) {
+    const { password } = user;
+    const passwordHash = await bcrypt.hash(password, 2)
+    
+    user['passwordHash'] = passwordHash 
+    delete user['password']
+    console.log(user)
   }
 };
 

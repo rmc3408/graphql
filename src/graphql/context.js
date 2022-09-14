@@ -1,4 +1,4 @@
 
-export const context = () => {
+export const context = ({ req, res }) => {
   return {};
 };

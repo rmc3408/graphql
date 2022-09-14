@@ -1,11 +1,10 @@
 import { ApolloServer } from 'apollo-server';
-import {
-  ApolloServerPluginLandingPageLocalDefault,
-} from 'apollo-server-core';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { context } from './graphql/context';
-import PostsApi from './graphql/post/datasources';
 import { typeDefs, resolvers } from './graphql/schema';
 import UsersApi from './graphql/user/datasources';
+import PostsApi from './graphql/post/datasources';
+import LoginApi from './graphql/login/datasources';
 
 const server = new ApolloServer({
   typeDefs,
@@ -18,6 +17,7 @@ const server = new ApolloServer({
     return { 
       postApi: new PostsApi(),
       userApi: new UsersApi(),
+      loginApi: new LoginApi(),
      } 
   },
 });
