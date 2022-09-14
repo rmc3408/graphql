@@ -2,6 +2,8 @@
 export const userResolvers = {
   Query: {
     getUser: async (parent, args, context, info) => {
+      if (!context.loggedUserID) throw new AuthenticationError('you must be logged in');
+      
       const data = await context.dataSources.userApi.getUser(args.id);
       return data;
     },

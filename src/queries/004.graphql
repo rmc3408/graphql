@@ -1,0 +1,58 @@
+query GET_USER_POSTS($getUserId: ID!) {
+  getUser(id: $getUserId) {
+    id
+    firstName
+    posts {
+      title
+    }
+  }
+}
+
+{
+"Authorization": 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+.eyJ1c2VySWQiOiJjZzN6NHVPIiwiaWF0IjoxNjYzMTc5NDYzLCJleHAiOjE2NjMyNjU4NjN9
+.uhtM_H7KgJ3VCzelMvZx9T4-qGw_4lYid54O72RhFQM'
+}
+
+{
+  "getUserId": "903"
+}
+
+mutation NEW_LOGIN($data: SignInInput) {
+  signInUser(data: $data) {
+    userId
+    token
+  }
+}
+
+{
+  "data": {
+    "userName": "rmc",
+    "password": "1Ra"
+  }
+}
+
+mutation CREATE_USER($data: CreateUserInput) {
+  createUser(data: $data) {
+    id
+    firstName
+    userName
+    lastName
+    posts {
+      id
+      title
+      body
+      userId
+      unixTimestamp
+    }
+  }
+}
+
+{
+  "data": {
+    "firstName": "Raphael",
+    "lastName": "Molinaro",
+    "userName": "rmc",
+    "password": "1Ra"
+  }
+}
