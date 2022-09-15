@@ -29,6 +29,7 @@ export const userResolvers = {
       
       return context.dataSources.userApi.updateUser(args.id, args.data)
     },
+    //need authorization
     deleteUser: async (parent, args, context, info) => {
       return context.dataSources.userApi.deleteUser(args.id)
     }

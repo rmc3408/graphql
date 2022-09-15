@@ -15,6 +15,7 @@ export async function createLoginUserFunction(data, dataloader) {
   if (!isValidHash) throw new AuthenticationError('Password invalid')
   
   const newToken = createToken(id)
+  await dataloader.patch(id, { token: newToken }, { cacheOptions: { ttl: 0 } });
   
   return { userId: id, token: newToken }
 }
@@ -24,6 +25,6 @@ function checkHashPassword(data, hash) {
 }
 
 function createToken(data) {
-  const newtoken = jwt.sign({ userId: data }, process.env.JWT_SECRET, { expiresIn: '1d' });
+  const newtoken = jwt.sign({ userId: data }, process.env.JWT_SECRET, { expiresIn: '2d' });
   return newtoken
 }
