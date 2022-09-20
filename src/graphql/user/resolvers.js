@@ -1,10 +1,9 @@
-import { AuthenticationError } from "apollo-server";
+import { checkOwnership } from "../login/auth-utils";
 
 export const userResolvers = {
   Query: {
     getUser: async (parent, args, context, info) => {
-      if (!context.isLogIn) throw new AuthenticationError('you must be logged in');
-      
+      checkOwnership(context.loggedUserID)
       const data = await context.dataSources.userApi.getUser(args.id);
       return data;
     },
@@ -24,13 +23,11 @@ export const userResolvers = {
       return context.dataSources.userApi.createUser(args.data)
     },
     patchUser: async (parent, args, context, info) => {
-      if (!context.isLogIn) throw new AuthenticationError('you must be logged in');
-      if (context.isLogIn !== args.id) throw new AuthenticationError('cannt change other user');
-      
+      checkOwnership(context.loggedUserID, args.id)
       return context.dataSources.userApi.updateUser(args.id, args.data)
     },
-    //need authorization
     deleteUser: async (parent, args, context, info) => {
+      checkOwnership(context.loggedUserID, args.id)
       return context.dataSources.userApi.deleteUser(args.id)
     }
   }

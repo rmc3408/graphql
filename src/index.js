@@ -10,9 +10,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context,
-  // csrfPrevention: true,
-  // cache: 'bounded',
-  // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  csrfPrevention: true,
+  cache: 'bounded',
+  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   dataSources: () => {
     return { 
       postApi: new PostsApi(),
