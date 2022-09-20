@@ -8,6 +8,7 @@ export const loginTypeDefs = gql`
 
   extend type Mutation {
     signInUser(data: SignInInput): SignIn!
+    signOutUser(userName: String!): Boolean!
   }
 
   input SignInInput {

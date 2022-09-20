@@ -20,6 +20,23 @@ export async function createLoginUserFunction(data, dataloader) {
   return { userId: id, token: newToken }
 }
 
+
+export async function logOutUserFunction(un, dataloader) { 
+  const userFound = await dataloader.get('', 
+    { userName: un},
+    { cacheOptions: { ttl: 0 }})
+  
+  const existUserFound = !!userFound.length;
+  if (!existUserFound) throw new AuthenticationError('User not found')
+
+  const { id: userId } = userFound[0]
+
+  if (userId !== dataloader.context.loggedUserID) throw new AuthenticationError('Cannot logout other users')
+  
+  await dataloader.patch(userId, { token: ''}, { cacheOptions: { ttl: 0 } });
+  return true
+}
+
 function checkHashPassword(data, hash) {
   return bcrypt.compare(data.password, hash)
 }
