@@ -17,6 +17,16 @@ export async function createLoginUserFunction(data, dataloader) {
   const newToken = createToken(id)
   await dataloader.patch(id, { token: newToken }, { cacheOptions: { ttl: 0 } });
   
+  //Create and save a cookie
+  dataloader.context.response.cookie('jwtToken', newToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 5, //5 days
+    secure: false, //only https or ssl
+    httpOnly: true, //only acess by cookie
+    path: '/',
+    samesite: 'strict'
+  })
+
+
   return { userId: id, token: newToken }
 }
 
@@ -34,6 +44,8 @@ export async function logOutUserFunction(un, dataloader) {
   if (userId !== dataloader.context.loggedUserID) throw new AuthenticationError('Cannot logout other users')
   
   await dataloader.patch(userId, { token: ''}, { cacheOptions: { ttl: 0 } });
+  dataloader.context.response.clearCookie('jwtToken')
+
   return true
 }
 

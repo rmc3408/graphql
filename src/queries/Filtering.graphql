@@ -1,0 +1,37 @@
+
+query USERS($input: filterInput) {
+  getUsers(input: $input) {
+    firstName
+    indexRef
+  }
+}
+
+query POSTS($getPostsInput2: filterInput) {
+  getPosts(input: $getPostsInput2) {
+    id
+    title
+    userId
+    indexRef
+    user {
+      id
+      firstName
+      userName
+    }
+  }
+}
+
+{
+  "input": {
+    "_sort": "indexRef",
+    "_order": "ASC",
+    "_limit": 3,
+    "_start": 0
+  },
+  "getPostsInput2": {
+    "_sort": "indexRef",
+    "_order": "DESC",
+    "_limit": 3,
+    "_start": 0
+  }
+}
+

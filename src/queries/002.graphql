@@ -32,36 +32,3 @@ query USER_AND_ALLPOSTS {
     }
   }
 }
-
-query USERS($input: filterInput) {
-  getUsers(input: $input) {
-    firstName
-    indexRef
-  }
-}
-
-{
-  "input": {
-    "_sort": "indexRef",
-    "_order": "ASC",
-    "_limit": 3,
-    "_start": 0
-  },
-  "getPostsInput2": {
-    "_sort": "userId",
-    "_order": "DESC",
-    "_limit": 4,
-    "_start": 0
-  }
-}
-
-query POSTS($getPostsInput2: filterInput) {
-  getPosts(input: $getPostsInput2) {
-    title
-    userId
-    indexRef
-    user {
-      firstName
-    }
-  }
-}

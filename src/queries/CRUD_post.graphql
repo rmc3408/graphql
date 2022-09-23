@@ -1,0 +1,47 @@
+mutation CREATE_POST_FROM_USER($data: CreatePostInput) {
+  createPost(data: $data) {
+    title
+    body
+    userId
+    id
+    user {
+      id
+      firstName
+    }
+  }
+}
+
+{
+  "data": {
+    "title": "Title - 2",
+    "body": "first content"
+  }
+}
+
+mutation UPDATE_POST($patchPostId: ID!, $data: UpdatePostInput!) {
+  patchPost(id: $patchPostId, data: $data) {
+    id
+    title
+    userId
+    user {
+      firstName
+      id
+    }
+  }
+}
+
+{
+  "patchPostId": "YpQvDjH",
+  "data": {
+    "title": "Title - 1"
+  }
+}
+
+mutation DELETE_POST($deletePostId: ID!) {
+  deletePost(id: $deletePostId)
+}
+
+{
+  "deletePostId": "uMRHBUR"
+}
+

@@ -1,0 +1,21 @@
+mutation LOGIN($data: SignInInput) {
+  signInUser(data: $data) {
+    userId
+    token
+  }
+}
+
+{
+  "data": {
+    "userName": "rmc",
+    "password": "1Ra"
+  }
+}
+
+mutation LOGOUT($userName: String!) {
+  signOutUser(userName: $userName)
+}
+
+{
+  "userName": "rmc"
+}

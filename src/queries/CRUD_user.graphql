@@ -1,0 +1,47 @@
+mutation CREATE_USER($data: CreateUserInput) {
+  createUser(data: $data) {
+    id
+    firstName
+    lastName
+    userName
+    indexRef
+    createdAt
+    posts {
+      title
+    }
+  }
+}
+
+{
+  "data": {
+      "firstName": "Raphael",
+      "lastName": "Molinaro Coelho",
+      "userName": "rmc",
+      "password": "1Ra"
+  }
+}
+
+mutation PATCH_USER($patchUserId: ID!, $data: UpdateUserInput!) {
+  patchUser(id: $patchUserId, data: $data) {
+    id
+    firstName
+    lastName
+    userName
+  }
+}
+
+{
+  "patchUserId": "decTYJZ",
+  "data": {
+    "firstName": "Raphael-1"
+  }
+}
+
+mutation DELETE_USER($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId)
+}
+
+{
+  "deleteUserId": "decTYJZ"
+}
+
