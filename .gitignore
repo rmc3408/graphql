@@ -1,6 +1,9 @@
 /laith01/node_modules
-/mysql/DBData
+mysql/DBData/*
 .vscode
+
+# do not this files
+!mysql/DBData/dados
 
 # Logs
 logs
