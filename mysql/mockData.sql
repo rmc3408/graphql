@@ -707,3 +707,18 @@ VALUES (
     "2021-03-30 01:48:13"
   );
 
+# ROLES TABLE
+INSERT INTO roles (name) VALUES ('POST'),('PUT'),('DELETE'),('GET');
+
+
+# USERS_ROLES TABLE
+-- INSERT INTO users_roles (user_id, role_id) VALUES (1,3);
+-- SELECT id FROM roles ORDER By RAND() LIMIT 1; 
+INSERT INTO users_roles (user_id, role_id)
+SELECT id, (SELECT id FROM roles ORDER By RAND() LIMIT 1) FROM users;
+
+
+# DUPLICATING ROLES PER USER
+
+INSERT IGNORE INTO users_roles (user_id, role_id)
+SELECT id, (SELECT id FROM roles ORDER By RAND() LIMIT 1) FROM users ORDER BY RAND() LIMIT 16;
