@@ -1,5 +1,3 @@
-// Update with your config settings.
-
 module.exports = {
   client: 'mysql2',
   connection: {
@@ -10,8 +8,7 @@ module.exports = {
     database: 'dados',
   },
   migrations: {
-    tableName: 'migration_users',
-    tableName: 'migration_profiles',
+    tableName: 'migrations'
   },
   pool: {
     min: 2,
