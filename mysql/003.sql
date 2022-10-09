@@ -32,7 +32,16 @@ INNER JOIN profiles as p ON u.id = p.user_id
 WHERE u.first_name = 'Ferris';
 
 # GROUP BY
+SELECT first_name, COUNT(id) as total FROM users
+GROUP BY first_name ORDER BY total DESC;
 
 
+# OPERATION FUNCTIONS
+SELECT MAX(salary), MIN(salary), SUM(salary), AVG(salary), COUNT(salary) FROM users as u;
+
+
+SELECT u.first_name, MAX(u.salary) as high, MIN(u.salary), SUM(u.salary), COUNT(u.id) as total FROM users as u
+LEFT JOIN profiles as p ON u.id = p.user_id
+GROUP BY u.first_name ORDER BY total DESC;
 
 
