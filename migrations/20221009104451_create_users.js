@@ -10,7 +10,7 @@
         table.string('last_name', 255);
         table.string('email', 255).notNullable().unique();
         table.string('password_hash', 255).notNullable().unique();
-        table.decimal('salary', 8, 2).notNullable();
+        table.decimal('salary', 8, 2);
         table.timestamps(true, true);
     }) 
 };
