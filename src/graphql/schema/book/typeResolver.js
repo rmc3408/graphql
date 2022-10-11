@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server-core';
-import { mockBooks } from '../mockData';
+import { mockBooks } from '../../mockData';
 
 export const bookTypeDefs = gql`
   type Book {

@@ -13,17 +13,17 @@ const transformedCommentDB = data.comments.map(data => {
 })
 //console.log(transformedCommentDB[0])
 
-// const select = knex.from('comments').limit(1);
-// console.log(select.toString())
+const select = knex.from('comments').limit(1);
+console.log(select.toString())
 // select
 // .then(data => console.log(data))
 // .catch(e => console.log(e.message))
 // .finally(()=> knex.destroy());
 
-const insert = knex.into('comments').insert(transformedCommentDB);
-console.log(insert.toString())
-insert
-.then(data => console.log(data))
-.catch(e => console.log(e.message))
-.finally(()=> knex.destroy());
+// const insert = knex.into('comments').insert(transformedCommentDB);
+// console.log(insert.toString())
+// insert
+// .then(data => console.log(data))
+// .catch(e => console.log(e.message))
+// .finally(()=> knex.destroy());
 

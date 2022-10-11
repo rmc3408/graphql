@@ -3,7 +3,7 @@ import { checkOwnership } from "../login/auth-utils";
 export const userResolvers = {
   Query: {
     getUser: async (parent, args, context, info) => {
-      checkOwnership(context.loggedUserID)
+      checkOwnership(context.loggedUserID, args.id)
       const data = await context.dataSources.userApi.getUser(args.id);
       return data;
     },

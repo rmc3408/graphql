@@ -54,6 +54,6 @@ function checkHashPassword(data, hash) {
 }
 
 function createToken(data) {
-  const newtoken = jwt.sign({ userId: data }, process.env.JWT_SECRET, { expiresIn: '2d' });
+  const newtoken = jwt.sign({ userId: data }, process.env.JWT_SECRET, { expiresIn: '14d' });
   return newtoken
 }
