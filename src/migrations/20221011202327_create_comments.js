@@ -5,7 +5,7 @@ exports.up = async function(knex) {
       table.text('comment', 600).notNullable();
       table.string('user_id').notNullable();
       table.string('post_id').notNullable();
-      //table.string('IndeREf').notNullable().unique();
+      //table.string('indexRef').notNullable().unique();
       table.timestamps(true, true);
   }) 
 };
