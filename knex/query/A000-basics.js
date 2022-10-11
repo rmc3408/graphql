@@ -1,3 +1,4 @@
+const { GRAPHQL_MAX_INT } = require('graphql');
 const knex = require('../db');
 
 
@@ -16,7 +17,7 @@ knex('users as u')
     .finally(()=> knex.destroy());
 
 
-// // SELECT id, first_name from users WHERE first_name='Raphael';
+// SELECT id, first_name from users WHERE first_name='Raphael';
 knex('users as u')
   .select('id', 'first_name')
   .where('first_name', 'Raphael')
@@ -55,6 +56,24 @@ knex('users as u')
 knex('users as u')
 .select('u.first_name as names')
 .whereILike('u.first_name', '%na')
+  .then(data => console.log(data))
+  .catch(e => console.log(e.message))
+  .finally(()=> knex.destroy());
+
+
+// SELECT first_name, COUNT(id) as total from users GROUP BY first_name ORDER BY total DESC LIMIT 10;
+knex('users as u')
+.select('u.first_name as names').count('id as total')
+.groupBy('first_name').orderBy('total', 'DESC').limit(10)
+  .then(data => console.log(data))
+  .catch(e => console.log(e.message))
+  .finally(()=> knex.destroy());
+
+
+// SELECT max(salary), COUNT(id) as total from users LIMIT 10;
+knex('users as u')
+.max('salary as maximum').count('id as total')
+.groupBy('first_name').orderBy('total', 'DESC').limit(10)
   .then(data => console.log(data))
   .catch(e => console.log(e.message))
   .finally(()=> knex.destroy());
