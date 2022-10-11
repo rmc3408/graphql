@@ -2,7 +2,7 @@ const knex = require('../db');
 
 
 // SELECT * FROM USERS;
-knex('users')
+knex.from('users')
   .then(data => console.log(data))
   .catch(e => console.log(e.message))
   .finally(()=> knex.destroy());

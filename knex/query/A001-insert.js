@@ -8,7 +8,7 @@ const data = [{
   salary: 9768.99
 }];
 
-knex('users').insert(data)
+knex.from('users').insert(data)
   .then(data => console.log(data))
   .catch(e => console.log(e.message))
   .finally(()=> knex.destroy());
