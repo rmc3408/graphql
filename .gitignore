@@ -6,6 +6,8 @@ mysql/DBData/*
 !mysql/DBData/dados
 mysql/DBKnex/*
 !mysql/DBKnex/dados
+mysql/DBGraphQL/*
+!mysql/DBGraphQL/dados
 
 # Logs
 logs
