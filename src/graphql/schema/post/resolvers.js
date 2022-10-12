@@ -20,6 +20,10 @@ export const postResolvers = {
       const loaderData = await context.dataSources.userApi.dataLoader.load(parent.userId);
       return loaderData;
     },
+    comment: async (parent, args, context, info) => {
+      const loaderData = await context.dataSources.commentApi.batchLoadById(parent.id);
+      return loaderData;
+    },
   },
   Mutation: {
     createPost: async (parent, args, context, info) => {

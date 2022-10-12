@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -e 'js' -r dotenv/config -r sucrase/register src/index.js",
     "json-server": "json-server --watch db.json"
   },
@@ -24,6 +23,7 @@
     "apollo-server": "^3.10.1",
     "bcrypt": "^5.0.1",
     "dataloader": "^2.1.0",
+    "datasource-sql": "^2.0.1",
     "graphql": "^16.5.0",
     "json-server": "^0.17.0",
     "jsonwebtoken": "^8.5.1",

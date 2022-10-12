@@ -8,6 +8,8 @@ import { filterTypeDefs } from './filter/type';
 import { filterResolvers } from './filter/resolvers';
 import { loginTypeDefs } from './login/type';
 import { loginResolvers } from './login/resolvers';
+import { commentTypeDefs } from './comments/type';
+import { commentResolvers } from './comments/resolvers';
 
 
 const rootTypeDefs = gql`
@@ -35,6 +37,7 @@ export const typeDefs = [
   postTypeDefs,
   filterTypeDefs,
   loginTypeDefs,
+  commentTypeDefs,
 ];
 
 export const resolvers = [
@@ -43,5 +46,6 @@ export const resolvers = [
   bookResolvers,
   postResolvers,
   filterResolvers,
-  loginResolvers
+  loginResolvers,
+  commentResolvers
 ];

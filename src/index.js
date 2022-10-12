@@ -5,6 +5,9 @@ import { typeDefs, resolvers } from './graphql/schema';
 import UsersApi from './graphql/schema/user/datasources';
 import PostsApi from './graphql/schema/post/datasources';
 import LoginApi from './graphql/schema/login/datasources';
+import { CommentSQLDataSource } from './graphql/schema/comments/datasources';
+
+const knexfile = require('../knexfile');
 
 const server = new ApolloServer({
   typeDefs,
@@ -18,7 +21,8 @@ const server = new ApolloServer({
       postApi: new PostsApi(),
       userApi: new UsersApi(),
       loginApi: new LoginApi(),
-     } 
+      commentApi: new CommentSQLDataSource(knexfile['development']),
+    } 
   },
 });
 
