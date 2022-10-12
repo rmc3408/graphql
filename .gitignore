@@ -1,5 +1,6 @@
 /laith01/node_modules
 .vscode
+.DS_Store
 
 # do not this files
 mysql/DBData/*

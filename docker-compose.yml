@@ -11,7 +11,8 @@ services:
       - --collation-server=utf8mb4_unicode_ci
       - --innodb_force_recovery=0
     volumes: 
-      - C:\github\graphql\mysql\DBGraphQL:/var/lib/mysql
+      - ./mysql/DBGraphQL:/var/lib/mysql
+      # - C:\github\graphql\mysql\DBGraphQL:/var/lib/mysql
       # - C:\github\graphql\mysql\DBData:/var/lib/mysql
       # - C:\github\graphql\mysql\DBKnex:/var/lib/mysql
     ports:
