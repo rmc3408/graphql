@@ -75,7 +75,7 @@ export class CommentSQLDataSource extends KnexDatasource {
 
     return {
       id: created[0],
-      createAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
       ...partialComment,
     };
   }
