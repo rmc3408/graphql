@@ -1,6 +1,24 @@
 import { KnexDatasource } from "../../datasources/sql/sql-datasource";
 
 export class CommentSQLDataSource extends KnexDatasource {
+
+  restoreDateFromDB(commentRawDB) {
+    return {
+      id: commentRawDB.id,
+      createdAt: new Date(commentRawDB.created_at).toISOString(),
+      ...commentRawDB,
+    }
+  }
+
+  async getAll() {
+    return this.db.from('comments');
+  }
+
+  async getOne(id) {
+    const query = this.db.from('comments').where({ id: id });
+    return query;
+  }
+
   async getCommentbyPostId(id) {
     const query = this.db.from('comments').where({ post_id: id });
     const result = await query;
@@ -24,7 +42,7 @@ export class CommentSQLDataSource extends KnexDatasource {
         return {
           id: commment.id,
           comment: commment.comment,
-          user_id: commment.user_id,
+          userId: commment.user_id,
           createdAt: new Date(commment.created_at).toISOString(),
         }
       })

@@ -3,10 +3,13 @@ import { checkIsLoggedIn } from '../login/auth-utils';
 export const commentResolvers = {
   Query: {
     getComment: async (parent, args, context, info) => {
-      return 'data';
+      const dataRaw = await context.dataSources.commentApi.getOne(args.id);
+      const data = context.dataSources.commentApi.restoreDateFromDB(dataRaw[0])
+      return data;
     },
     getComments: async (parent, args, context, info) => {
-      return 'data';
+      const data = await context.dataSources.commentApi.getAll();
+      return data;
     },
   },
   Comment: {
