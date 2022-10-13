@@ -19,7 +19,7 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 const httpServer = createServer(app);
-const wsServer = new WebSocketServer({ server: httpServer, path: "/graphql", });
+const wsServer = new WebSocketServer({ server: httpServer, path: "/graphql" });
 const serverCleanup = useServer(
   {
     schema,
