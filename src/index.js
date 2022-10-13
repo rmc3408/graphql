@@ -19,7 +19,7 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 const httpServer = createServer(app);
-const wsServer = new WebSocketServer({ server: httpServer, path: "/", });
+const wsServer = new WebSocketServer({ server: httpServer, path: "/graphql", });
 const serverCleanup = useServer(
   {
     schema,
@@ -64,10 +64,12 @@ const server = new ApolloServer({
   },
 });
 
+const PORT = process.env.GRAPHQL_PORT || 4000;
+
 server.start().then(() => {
   server.applyMiddleware({ app });
-  httpServer.listen(process.env.DATABASE_PORT || 4000, () => {
-    console.log(`🚀  Server at http://localhost:4000/`);
+  httpServer.listen(PORT, () => {
+    console.log(`🚀 Server at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
 
