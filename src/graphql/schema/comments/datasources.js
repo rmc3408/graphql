@@ -51,7 +51,7 @@ export class CommentSQLDataSource extends KnexDatasource {
     return filteredComments;
   }
 
-  async createCommentFunction({ userId, postId, comment }) {
+  async createCommentFunction({ userId, postId, comment, postOwner = null }) {
     let partialComment = {
       user_id: userId,
       post_id: postId,
@@ -68,7 +68,8 @@ export class CommentSQLDataSource extends KnexDatasource {
         ...partialComment
       }
       pubSub.publish('ON_EXIST', {
-        onCreatedComment: partialComment
+        onCreatedComment: partialComment,
+        postOwner: false
       })
       return partialComment;
       //throw new ValidationError('Comment already created');
@@ -80,10 +81,12 @@ export class CommentSQLDataSource extends KnexDatasource {
       id: created[0],
       createdAt: new Date().toISOString(),
       ...partialComment,
+      
     };
 
     pubSub.publish('ON_CREATED', {
-      onCreatedComment: commentReturned
+      onCreatedComment: commentReturned,
+      postOwner: true
     })
     return commentReturned;
   }
