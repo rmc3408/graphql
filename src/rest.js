@@ -13,6 +13,7 @@ const get = (endPoint, urlParam, requestInit = {}) => {
   });
 };
 
+
 const post = (endPoint, body, requestInit = {}) => {
   const url = API_URL + '/' + endPoint;
   return fetch(url, {
