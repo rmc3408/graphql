@@ -164,11 +164,11 @@
       "firstName": "Raphael",
       "lastName": "Molinaro Coelho",
       "userName": "rmc",
-      "passwordHash": "$2b$04$yByi7P5PR..mYRDisyqLtOi.u7WQItvbRRQzFdHFq3dOW.b.yDtIi",
+      "passwordHash": "$2b$04$Vdg58OC9G1A2sG0iD64rQu4CaTVkWGi09DMhhYa1R5OO4Urkj9TC.",
       "indexRef": 21,
-      "createdAt": "2022-10-11T21:42:13.917Z",
-      "id": "pRbdPNP",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJwUmJkUE5QIiwiaWF0IjoxNjY1NTg5NjY3LCJleHAiOjE2NjY3OTkyNjd9.1TCpGW9TgpTV489J3jpo6m0_AxSW1au7fVG3J6KtpD8"
+      "createdAt": "2022-10-13T18:16:02.641Z",
+      "id": "_FPKOvA",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJfRlBLT3ZBIiwiaWF0IjoxNjY1NjkzMjU4LCJleHAiOjE2NjY5MDI4NTh9.Rb383G4Rili1Zb5K8Nz1S74BtJYilEpgF6cC6a_qvhM"
     }
   ],
   "posts": [

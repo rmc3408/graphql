@@ -13,19 +13,16 @@ export const commentTypeDefs = gql`
     getComments(input: filterInput): [Comment!]!
   }
 
+  extend type Subscription {
+    onCreatedComment(test: String): Comment!
+  }
+
   extend type Mutation {
     createComment(data: CreateCommentInput): Comment!
-    patchComment(id: ID!, data: UpdateUserInput!): Comment!
-    deleteComment(id: ID!): Boolean!
   }
 
   input CreateCommentInput {
     comment: String!
-    postId: String!
-  }
-
-  input UpdateCommentInput {
-    Comment: String
     postId: String!
   }
 `;

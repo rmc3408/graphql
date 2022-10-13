@@ -1,4 +1,7 @@
+import { PubSub } from 'graphql-subscriptions';
 import { checkIsLoggedIn } from '../login/auth-utils';
+
+export const pubSub = new PubSub();
 
 export const commentResolvers = {
   Query: {
@@ -23,14 +26,14 @@ export const commentResolvers = {
       checkIsLoggedIn(context.loggedUserID)
       const newComment = { userId: context.loggedUserID, ...args.data };
       return await context.dataSources.commentApi.createCommentFunction(newComment);
-    },
-    // patchUser: async (parent, args, context, info) => {
-    //   checkOwnership(context.loggedUserID, args.id)
-    //   return context.dataSources.userApi.updateUser(args.id, args.data)
-    // },
-    // deleteUser: async (parent, args, context, info) => {
-    //   checkOwnership(context.loggedUserID, args.id)
-    //   return context.dataSources.userApi.deleteUser(args.id)
-    // }
+    }
   },
+  Subscription: {
+    onCreatedComment: {
+      subscribe: (parent, args, context) => {
+        checkIsLoggedIn(context.loggedUserID)
+        return pubSub.asyncIterator(['ON_CREATED', 'ON_EXIST'])
+      }
+    }
+  }
 };

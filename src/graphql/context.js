@@ -4,7 +4,7 @@ export const context = ({ req, res }) => {
   let loggedUserID = verifyAuthHeaders(req.headers.authorization);
 
   if (loggedUserID === 'wrong') {
-    if (req.headers.cookie) {
+    if (req && req.headers && req.headers.cookie) {
       const { jwtToken } = cookieParser(req.headers.cookie);
       loggedUserID = verifyAuthHeaders('bearer ' + jwtToken);
     }
@@ -16,7 +16,23 @@ export const context = ({ req, res }) => {
   };
 };
 
-function verifyAuthHeaders(fulltoken) {
+export const contextWS = (auth) => {
+  let loggedUserID = verifyAuthHeaders(auth);
+
+  if (loggedUserID === 'wrong') {
+    if (auth.includes('jwtToken')) {
+      const { jwtToken } = cookieParser(auth);
+      loggedUserID = verifyAuthHeaders('bearer ' + jwtToken);
+    }
+  }
+
+  return {
+    loggedUserID,
+    response: 'Hello',
+  };
+};
+
+export function verifyAuthHeaders(fulltoken) {
   try {
     const [bearer, token] = fulltoken.split(' ');
     const user = jwt.verify(token, process.env.JWT_SECRET);
