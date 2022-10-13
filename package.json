@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon -e 'js' -r dotenv/config -r sucrase/register src/index.js --delay 2",
-    "json-server": "json-server --watch db.json"
+    "json-server": "json-server --watch db.json",
+    "build": "rimraf ./dist && sucrase ./src -d ./dist --transforms imports",
+    "start": "npm run json-server && node -r dotenv/config dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "knex": "^2.3.0",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.2.10",
+    "rimraf": "^3.0.2",
     "ws": "^8.9.0"
   },
   "devDependencies": {
