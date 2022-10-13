@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 
 // has already been declared
 (async () => {
-  console.clear();
+  console.clear(); 
 
   const execPost = async (variables) => {
     const graphQLUrl = "http://localhost:4000/";
