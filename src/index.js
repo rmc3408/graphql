@@ -59,7 +59,7 @@ const server = new ApolloServer({
       postApi: new PostsApi(),
       userApi: new UsersApi(),
       loginApi: new LoginApi(),
-      commentApi: new CommentSQLDataSource(knexfile[process.env.ENVIROMENT]),
+      commentApi: new CommentSQLDataSource(knexfile[process.env.NODE_ENV]),
     } 
   },
 });
