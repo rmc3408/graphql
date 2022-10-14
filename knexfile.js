@@ -17,7 +17,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
-      directory: './src/migrations',
+      directory: resolve(__dirname, 'migrations'),
     },
     pool: {
       min: 2,
@@ -35,6 +35,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
+      directory: resolve(__dirname, 'migrations'),
     },
     pool: {
       min: 2,
