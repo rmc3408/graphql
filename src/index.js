@@ -59,12 +59,12 @@ const server = new ApolloServer({
       postApi: new PostsApi(),
       userApi: new UsersApi(),
       loginApi: new LoginApi(),
-      commentApi: new CommentSQLDataSource(knexfile['development']),
+      commentApi: new CommentSQLDataSource(knexfile[process.env.ENVIROMENT]),
     } 
   },
 });
 
-const PORT = process.env.GRAPHQL_PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 server.start().then(() => {
   server.applyMiddleware({ app });
