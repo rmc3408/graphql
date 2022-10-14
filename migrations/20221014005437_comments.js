@@ -1,15 +1,16 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function(knex) {
-  
+exports.up = async function(knex) {
+  return knex.schema
+  .createTable('comments', function (table) {
+      table.increments('id').primary();
+      table.text('comment', 600).notNullable();
+      table.string('user_id').notNullable();
+      table.string('post_id').notNullable();
+      //table.string('indexRef').notNullable().unique();
+      table.timestamps(true, true);
+  }) 
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function(knex) {
-  
+  return knex.schema
+  .dropTable("comments");
 };
