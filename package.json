@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon -e 'js' -r dotenv/config -r sucrase/register src/index.js --delay 2",
-    "json-server": "json-server --watch db.json",
+    "server": "json-server --watch db.json",
     "build": "rimraf ./dist && sucrase ./src -d ./dist --transforms imports",
-    "start": "npm run json-server & node -r dotenv/config dist/index.js"
+    "start": "npm run server & node -r dotenv/config dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,9 @@
     "apollo-server": "^3.10.3",
     "apollo-server-core": "^3.10.3",
     "bcrypt": "^5.0.1",
-    "body-parser": "^1.20.1",
-    "cors": "^2.8.5",
     "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
+    "dotenv": "^16.0.1",
     "express": "^4.18.2",
     "graphql": "^16.6.0",
     "graphql-subscriptions": "^2.0.0",
@@ -40,11 +39,9 @@
     "mysql2": "^2.3.3",
     "node-fetch": "^2.2.10",
     "rimraf": "^3.0.2",
-    "ws": "^8.9.0",
-    "dotenv": "^16.0.1"
+    "ws": "^8.9.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
