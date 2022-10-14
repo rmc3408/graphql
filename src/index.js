@@ -14,7 +14,6 @@ import { useServer } from 'graphql-ws/lib/use/ws';
 
 const knexfile = require('../knexfile');
 
-
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
