@@ -31,6 +31,8 @@ const serverCleanup = useServer(
     onDisconnect(ctx, code, reason) {
       console.log('Disconnected!');
     },
+    path: '/graphql',
+    keepAlive: 5000,
   },
   wsServer,
 );
