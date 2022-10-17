@@ -43,6 +43,10 @@ const server = new ApolloServer({
   context,
   csrfPrevention: true,
   cache: 'bounded',
+  cors: {
+    origin: ['http://localhost:3001'],
+    credentials: true,
+  },
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
     {

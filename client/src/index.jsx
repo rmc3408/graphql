@@ -10,7 +10,7 @@ import { GlobalStyles } from './styles/global-styles';
 import { Main } from './page-bases/Main';
 
 import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from './apolloClient';
+import { apolloClient } from './graphql/apollo/apolloClient';
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
