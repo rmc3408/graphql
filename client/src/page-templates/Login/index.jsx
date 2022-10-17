@@ -8,7 +8,7 @@ import { Loading } from 'components/Loading';
 export const Login = () => {
   const [addUser, { data, loading, error }] = useMutation(GQL_LOGIN, {
     onError: ({ networkError, graphQLErrors }) => {
-      console.log('👮🏻‍♀️ Network error', networkError.message);
+      console.log('👮🏻‍♀️ Network error', networkError?.message);
       console.log('👮🏻‍♀️ GraphQL error', graphQLErrors[0]?.message);
     },
   });
