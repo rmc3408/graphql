@@ -4,7 +4,6 @@ export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-flow: column nowrap;
-    padding: ${theme.spacings.large} 0;
     margin: ${theme.spacings.large} 0;
     align-items: center;
     justify-content: center;
