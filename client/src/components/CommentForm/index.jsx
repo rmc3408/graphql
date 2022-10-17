@@ -22,11 +22,7 @@ export const CommentForm = ({ handleSubmit, buttonDisabled = false }) => {
       <DefaultContainer>
         <h3>Create a comment</h3>
         <Styled.Form onSubmit={onSubmit}>
-          <FormTextArea
-            label="Comment"
-            id="commentBody"
-            changeFn={(v) => setComment(v)}
-          />
+          <FormTextArea label="Comment" id="commentBody" changeFn={(v) => setComment(v)} />
           <FormButton type="submit" icon={<Send />} disabled={buttonDisabled}>
             Send comment
           </FormButton>

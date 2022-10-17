@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // Scalar type = String, int, float and boolean
@@ -18,7 +18,7 @@ exports.typeDefs = gql`
     id: ID!
     name: String!
     products(filter: BySale): [Product!]
-  } 
+  }
 
   type Product {
     id: ID!
@@ -57,9 +57,9 @@ exports.typeDefs = gql`
   }
 
   input AddCat {
-    name: String! 
+    name: String!
   }
-  
+
   input AddProduct {
     name: String!
     description: String
@@ -69,7 +69,7 @@ exports.typeDefs = gql`
     image: String!
     cat_id: String!
   }
-  
+
   input AddReview {
     date: String!
     title: String!
@@ -79,7 +79,7 @@ exports.typeDefs = gql`
   }
 
   input UpdateCat {
-    name: String! 
+    name: String!
   }
 
   type Mutation {

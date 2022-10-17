@@ -1,7 +1,7 @@
 const convertISOtoSQL = (data) => {
   let dateUnformatted;
-  
-  if (!data) { 
+
+  if (!data) {
     dateUnformatted = new Date();
   } else {
     dateUnformatted = new Date(data);
@@ -15,4 +15,4 @@ const convertISOtoSQL = (data) => {
   return newTime;
 };
 
-module.exports.convertISOtoSQL = convertISOtoSQL
+module.exports.convertISOtoSQL = convertISOtoSQL;

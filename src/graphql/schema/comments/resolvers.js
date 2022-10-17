@@ -34,12 +34,12 @@ export const commentResolvers = {
         (parent, args, context) => {
           checkIsLoggedIn(context.loggedUserID);
           return pubSub.asyncIterator(['ON_CREATED', 'ON_EXIST']);
-        }, 
+        },
         (payload, args, context) => {
           const postOwnerIsLoggedUser = payload.onCreatedComment.user_id === context.loggedUserID;
           const newPostOwnUser = payload.postOwner && postOwnerIsLoggedUser;
           return newPostOwnUser;
-        }
+        },
       ),
     },
   },

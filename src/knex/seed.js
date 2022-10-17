@@ -20,7 +20,6 @@ const transformedCommentDB = data.comments.map((data) => {
 //   .catch((e) => console.log(e.message))
 //   .finally(() => knex.destroy());
 
-
 // const insert = knex.into('comments').insert(transformedCommentDB);
 // console.log(insert.toString())
 // insert

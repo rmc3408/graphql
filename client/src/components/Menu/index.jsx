@@ -31,19 +31,12 @@ export function MenuMemo({ loading = false, data = {}, handleLogout }) {
 
             {!!data?.userId && (
               <>
-                <Styled.RouterLink to="/post/create">
-                  Create post
-                </Styled.RouterLink>
-                <Styled.RouterLink to="/register">
-                  Update Account
-                </Styled.RouterLink>
+                <Styled.RouterLink to="/post/create">Create post</Styled.RouterLink>
+                <Styled.RouterLink to="/register">Update Account</Styled.RouterLink>
                 <Styled.RouterLink to="#" onClick={handleLogout}>
                   Logout
                 </Styled.RouterLink>
-                <ToggleButton
-                  title="Enable or disable notifications"
-                  onChangeFn={() => {}}
-                />
+                <ToggleButton title="Enable or disable notifications" onChangeFn={() => {}} />
               </>
             )}
 
@@ -55,10 +48,7 @@ export function MenuMemo({ loading = false, data = {}, handleLogout }) {
             )}
           </Styled.Nav>
 
-          <ToggleButton
-            title="Toggle notifications"
-            onChangeFn={notificationCb}
-          />
+          <ToggleButton title="Toggle notifications" onChangeFn={notificationCb} />
         </Styled.VerticalCenter>
 
         <Styled.ShowButton isVisible={isVisible} onClick={showMenu}>

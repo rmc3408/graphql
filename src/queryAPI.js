@@ -1,6 +1,6 @@
 // IIFE - This is just to user snippets on chrome and
 // make sure we won't have an error like:
-// Uncaught SyntaxError: Identifier 'createPost' 
+// Uncaught SyntaxError: Identifier 'createPost'
 
 import fetch from 'node-fetch';
 
@@ -9,7 +9,7 @@ import fetch from 'node-fetch';
   console.clear();
 
   const execPost = async (variables) => {
-    const graphQLUrl = "http://localhost:4000/";
+    const graphQLUrl = 'http://localhost:4000/';
     const query = `
           mutation CREATE_POST(
             $title: String!
@@ -35,9 +35,9 @@ import fetch from 'node-fetch';
           }
       `;
     const response1 = await fetch(graphQLUrl, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         query,
@@ -50,9 +50,9 @@ import fetch from 'node-fetch';
   };
 
   const result1 = await execPost({
-    title: "title 1",
-    body: "body 1",
-    userId: "602",
+    title: 'title 1',
+    body: 'body 1',
+    userId: '602',
   });
 
   console.log(result1);

@@ -2,12 +2,7 @@ import P from 'prop-types';
 import { useState } from 'react';
 import * as Styled from './styles';
 
-export const ToggleButton = ({
-  description = '',
-  title = '',
-  state = true,
-  onChangeFn,
-}) => {
+export const ToggleButton = ({ description = '', title = '', state = true, onChangeFn }) => {
   const [on, setOn] = useState(state);
 
   const handleChange = () => {
@@ -22,9 +17,7 @@ export const ToggleButton = ({
         <Styled.Slider isActive={on}></Styled.Slider>
         <Styled.OnOffText isActive={on}>{on ? 'ON' : 'OFF'}</Styled.OnOffText>
       </Styled.Switch>
-      {!!description && (
-        <Styled.Description isActive={on}>{description}</Styled.Description>
-      )}
+      {!!description && <Styled.Description isActive={on}>{description}</Styled.Description>}
     </Styled.Container>
   );
 };

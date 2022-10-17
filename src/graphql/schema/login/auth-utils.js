@@ -1,9 +1,8 @@
 import { AuthenticationError } from 'apollo-server';
 
 export function checkOwnership(logged, userId) {
-  checkIsLoggedIn(logged)
-  if (logged !== userId)
-    throw new AuthenticationError('cannot change info from other user');
+  checkIsLoggedIn(logged);
+  if (logged !== userId) throw new AuthenticationError('cannot change info from other user');
 }
 
 export function checkIsLoggedIn(logged) {

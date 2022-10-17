@@ -1,17 +1,17 @@
-import { RESTDataSource } from "apollo-datasource-rest";
-import { createLoginUserFunction, logOutUserFunction } from "./utils";
+import { RESTDataSource } from 'apollo-datasource-rest';
+import { createLoginUserFunction, logOutUserFunction } from './utils';
 
 class LoginApi extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = process.env.USERS_URL;  
+    this.baseURL = process.env.USERS_URL;
   }
 
-  async createLoginUser(data) { 
-    return createLoginUserFunction(data, this)
+  async createLoginUser(data) {
+    return createLoginUserFunction(data, this);
   }
-  async logoutUser(un) { 
-    return logOutUserFunction(un, this)
+  async logoutUser(un) {
+    return logOutUserFunction(un, this);
   }
 }
 

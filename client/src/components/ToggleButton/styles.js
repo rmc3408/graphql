@@ -25,17 +25,14 @@ export const Switch = styled.div`
     border: ${theme.spacings.xxtiny} solid ${theme.colorGray.gray10};
     border-radius: ${theme.radius.small};
     position: relative;
-    box-shadow: inset -5px 5px 5px rgba(0, 0, 0, 0.1),
-      0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: inset -5px 5px 5px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
     transition: all 300ms ease-in-out;
 
     ${isActive &&
     css`
       background: ${theme.colors.primary};
-      box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
-        0 0 5px ${theme.colors.primary};
-      border: ${theme.spacings.xxtiny} solid
-        ${theme.colorVariants.primaryDarker1};
+      box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2), 0 0 5px ${theme.colors.primary};
+      border: ${theme.spacings.xxtiny} solid ${theme.colorVariants.primaryDarker1};
     `}
   `}
 `;
@@ -57,8 +54,7 @@ export const Slider = styled.div`
     ${isActive &&
     css`
       left: 3.6rem;
-      box-shadow: inset -5px 5px 5px rgba(0, 0, 0, 0.1),
-        0 0 5px rgba(0, 0, 0, 0.1);
+      box-shadow: inset -5px 5px 5px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
       background: ${theme.colorGray.gray06};
     `}
   `}

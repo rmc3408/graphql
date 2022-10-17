@@ -1,9 +1,4 @@
-import {
-  AddCircleOutline,
-  Face,
-  Favorite,
-  Fingerprint,
-} from '@styled-icons/material-outlined';
+import { AddCircleOutline, Face, Favorite, Fingerprint } from '@styled-icons/material-outlined';
 import { FormButton } from '.';
 
 export default {

@@ -14,9 +14,8 @@ import jwt from 'jsonwebtoken';
 // })();
 
 (async () => {
-
   let token = jwt.sign({ userId: 'Raphael' }, process.env.JWT_SECRET, { expiresIn: '10s' });
-  console.log('TOKEN ', token)
+  console.log('TOKEN ', token);
 
   const delay = () => new Promise((r) => setTimeout(r, 2000));
   await delay();

@@ -1,22 +1,17 @@
 import { notificationsVarManager } from 'graphql/reactive-vars/local-storage';
 import P from 'prop-types';
 
+// eslint-disable-next-line react/prop-types
 const CreatedCommentSubscription = ({ _enableNotifications, _authData }) => {
   // SUBSCRIPTION
   return null;
 };
 
 export const CommentCreated = ({ authData }) => {
-  const { enable: enableNotifications = false } =
-    notificationsVarManager.useHook();
+  const { enable: enableNotifications = false } = notificationsVarManager.useHook();
 
   if (enableNotifications) {
-    return (
-      <CreatedCommentSubscription
-        enableNotifications={enableNotifications}
-        authData={authData}
-      />
-    );
+    return <CreatedCommentSubscription enableNotifications={enableNotifications} authData={authData} />;
   }
 
   return null;

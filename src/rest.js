@@ -1,6 +1,6 @@
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
 
-const API_URL = "http://localhost:3000/users"
+const API_URL = 'http://localhost:3000/users';
 
 const get = (endPoint, urlParam, requestInit = {}) => {
   const url = API_URL + '/' + endPoint + '?' + new URLSearchParams(urlParam).toString();
@@ -12,7 +12,6 @@ const get = (endPoint, urlParam, requestInit = {}) => {
     ...requestInit,
   });
 };
-
 
 const post = (endPoint, body, requestInit = {}) => {
   const url = API_URL + '/' + endPoint;
@@ -68,8 +67,6 @@ const del = (endPoint, body, requestInit = {}) => {
   const user = await userGetResponse.json();
   console.log(user);
 
-
-
   // POST -> Criar
   // const userResponse = await post('', {
   //   id: '6000',
@@ -82,9 +79,6 @@ const del = (endPoint, body, requestInit = {}) => {
   // const user = await userResponse.json();
   // console.log(user);
 
-
-
-
   // PUT -> Atualizar todo o objeto
   // const userResponse = await put('6000', {
   //   firstName: 'EDITADO COM PUT - Márcia',
@@ -92,18 +86,12 @@ const del = (endPoint, body, requestInit = {}) => {
   // const user = await userResponse.json();
   // console.log(user);
 
-
-
-
   // PATCH -> Atualizar o objeto parcialmente
   // const userResponse = await patch('6000', {
   //   firstName: 'EDITADO COM PATCH - Márcia',
   // });
   // const user = await userResponse.json();
   // console.log(user);
-
-
-
 
   // DELETE -> Apaga o objeto
   // const userResponse = await del('6000');

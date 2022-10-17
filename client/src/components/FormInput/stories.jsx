@@ -37,19 +37,8 @@ export const NoIcon = (args) => {
 export const Siblings = (args) => {
   return (
     <>
-      <FormInput
-        {...args}
-        icon={<Person />}
-        label={'First one'}
-        id={'first-one'}
-      />
-      <FormInput
-        {...args}
-        icon={<Password />}
-        label={'Second one'}
-        id={'second-one'}
-        type={'password'}
-      />
+      <FormInput {...args} icon={<Person />} label={'First one'} id={'first-one'} />
+      <FormInput {...args} icon={<Password />} label={'Second one'} id={'second-one'} type={'password'} />
       <FormInput {...args} icon={''} label={'Third one'} id={'third-one'} />
     </>
   );

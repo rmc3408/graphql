@@ -29,8 +29,7 @@ export const OuterInput = styled.div`
     &:focus-within {
       border-color: ${theme.colors[hasError ? 'error' : 'primary']};
       background: ${theme.colors.white};
-      box-shadow: 0 0 5px
-        ${transparentize(0.5, theme.colors[hasError ? 'error' : 'primary'])};
+      box-shadow: 0 0 5px ${transparentize(0.5, theme.colors[hasError ? 'error' : 'primary'])};
     }
 
     &:focus-within svg {

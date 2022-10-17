@@ -7,8 +7,7 @@ export const Container = styled.div`
     margin: ${theme.spacings.large} 0;
     align-items: center;
     justify-content: center;
-    font-family: ui-monospace, SFMono-Regular, SF Mono, Consolas,
-      Liberation Mono, Menlo, monospace;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Consolas, Liberation Mono, Menlo, monospace;
     font-size: 1.8rem;
     font-weight: normal;
 

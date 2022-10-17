@@ -21,9 +21,7 @@ export const AuthForm = ({
 }) => {
   return (
     <DefaultContainer>
-      <Styled.HeadingStyles>
-        Login {!!savedUserName && `(${savedUserName})`}
-      </Styled.HeadingStyles>
+      <Styled.HeadingStyles>Login {!!savedUserName && `(${savedUserName})`}</Styled.HeadingStyles>
 
       <form onSubmit={handleLogin}>
         <FormInput
@@ -47,11 +45,7 @@ export const AuthForm = ({
         {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 
         <Styled.ButtonsContainer>
-          <FormButton
-            type="submit"
-            icon={<Login />}
-            disabled={formDisabled || loading}
-          >
+          <FormButton type="submit" icon={<Login />} disabled={formDisabled || loading}>
             Sign-in
           </FormButton>
           <span className="or-text">or</span>

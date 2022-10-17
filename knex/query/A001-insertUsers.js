@@ -1,4 +1,4 @@
-const knex = require('../db')
+const knex = require('../db');
 
 const data = `
 INSERT INTO users (
@@ -710,9 +710,8 @@ VALUES (
 );
 `;
 
-knex.raw(data)
-  .then(data => console.log(data))
-  .catch(e => console.log(e.message))
-  .finally(()=> knex.destroy());
-
-  
+knex
+  .raw(data)
+  .then((data) => console.log(data))
+  .catch((e) => console.log(e.message))
+  .finally(() => knex.destroy());

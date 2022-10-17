@@ -18,7 +18,8 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 const httpServer = createServer(app);
-const wsServer = new WebSocketServer({ server: httpServer, path: "/graphql" });
+const wsServer = new WebSocketServer({ server: httpServer, path: '/graphql' });
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const serverCleanup = useServer(
   {
     schema,
@@ -56,12 +57,12 @@ const server = new ApolloServer({
     ApolloServerPluginLandingPageLocalDefault({ embed: true }),
   ],
   dataSources: () => {
-    return { 
+    return {
       postApi: new PostsApi(),
       userApi: new UsersApi(),
       loginApi: new LoginApi(),
       commentApi: new CommentSQLDataSource(knexfile[process.env.NODE_ENV]),
-    } 
+    };
   },
 });
 
@@ -73,5 +74,3 @@ server.start().then(() => {
     console.log(`🚀 Server at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
-
-

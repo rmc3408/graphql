@@ -33,11 +33,7 @@ export const FormInput = ({
   return (
     <Styled.inputContainer isDisabled={disabled} hasError={!!error}>
       {!!label && (
-        <Styled.InputLabelStyles
-          isDisabled={disabled}
-          htmlFor={id}
-          hasError={!!error}
-        >
+        <Styled.InputLabelStyles isDisabled={disabled} htmlFor={id} hasError={!!error}>
           {label}
         </Styled.InputLabelStyles>
       )}

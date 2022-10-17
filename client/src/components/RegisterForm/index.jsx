@@ -1,11 +1,4 @@
-import {
-  Info,
-  Password,
-  Person,
-  PersonAdd,
-  TextFields,
-  Warning,
-} from '@styled-icons/material-outlined';
+import { Info, Password, Person, PersonAdd, TextFields, Warning } from '@styled-icons/material-outlined';
 import { DefaultContainer } from 'components/DefaultContainer';
 import { FormButton } from 'components/FormButton';
 import { FormErrorMessage } from 'components/FormErrorMessage';
@@ -16,12 +9,7 @@ import * as Styled from './styles';
 import P from 'prop-types';
 import { UserPropTypes } from 'components/Post/prop-types';
 
-export const RegisterForm = ({
-  authData = {},
-  handleSubmitCb,
-  somethingLoading = false,
-  formError = '',
-}) => {
+export const RegisterForm = ({ authData = {}, handleSubmitCb, somethingLoading = false, formError = '' }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -46,11 +34,9 @@ export const RegisterForm = ({
             <Styled.FormInfoMessage messageType="warning">
               <Warning title="Warning" />
               <span>
-                You are updating your user <code>{authData?.userName}</code>.
-                Any changes on this page{' '}
-                <strong>will cause an automatic logout</strong>. You will only
-                be able to login again using the new values (after updating). We
-                will not keep your old data in our databases.
+                You are updating your user <code>{authData?.userName}</code>. Any changes on this page{' '}
+                <strong>will cause an automatic logout</strong>. You will only be able to login again using the new
+                values (after updating). We will not keep your old data in our databases.
               </span>
             </Styled.FormInfoMessage>
           )}
@@ -59,10 +45,9 @@ export const RegisterForm = ({
             <Styled.FormInfoMessage messageType="info">
               <Info title="Info" />
               <span>
-                If you do not intend to update a field, leave the value as is.
-                As we do not store your <strong>password</strong> in our
-                database (for security reasons), if you do not want to change
-                its value, <strong>leave it blank</strong>.
+                If you do not intend to update a field, leave the value as is. As we do not store your{' '}
+                <strong>password</strong> in our database (for security reasons), if you do not want to change its
+                value, <strong>leave it blank</strong>.
               </span>
             </Styled.FormInfoMessage>
           )}
@@ -92,13 +77,7 @@ export const RegisterForm = ({
               textValue={authData?.userName}
             />
 
-            <FormInput
-              id="password"
-              label="Password"
-              placeholder="Password"
-              type="password"
-              icon={<Password />}
-            />
+            <FormInput id="password" label="Password" placeholder="Password" type="password" icon={<Password />} />
 
             {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 

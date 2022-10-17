@@ -9,9 +9,7 @@ export const PrivateRoute = ({ children = '', component = '', ...rest }) => {
   const isLoggedIn = authData && !!authData.userId;
 
   if (component) {
-    throw new Error(
-      'You should not use component with PrivateRoute, use children instead.',
-    );
+    throw new Error('You should not use component with PrivateRoute, use children instead.');
   }
 
   const renderFn = ({ location }) => {

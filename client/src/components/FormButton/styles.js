@@ -31,30 +31,24 @@ const outlinedStyles = (theme, bgColor) => css`
 
   &:hover {
     background: none;
-    box-shadow: inset 0 0 0 ${theme.spacings.xtiny}
-        ${lighten(0.1, theme.colors[bgColor])},
-      inset 0 0 ${theme.spacings.huge}
-        ${transparentize(0.95, theme.colors[bgColor])},
+    box-shadow: inset 0 0 0 ${theme.spacings.xtiny} ${lighten(0.1, theme.colors[bgColor])},
+      inset 0 0 ${theme.spacings.huge} ${transparentize(0.95, theme.colors[bgColor])},
       0 0 ${theme.spacings.tiny} ${transparentize(0.7, theme.colors[bgColor])};
     color: ${theme.colors[bgColor]};
   }
 
   &:focus {
     background: none;
-    box-shadow: inset 0 0 0 ${theme.spacings.xtiny}
-        ${lighten(0.15, theme.colors[bgColor])},
-      inset 0 0 ${theme.spacings.huge}
-        ${transparentize(0.95, theme.colors[bgColor])},
+    box-shadow: inset 0 0 0 ${theme.spacings.xtiny} ${lighten(0.15, theme.colors[bgColor])},
+      inset 0 0 ${theme.spacings.huge} ${transparentize(0.95, theme.colors[bgColor])},
       0 0 ${theme.spacings.xsmall} ${transparentize(0.8, theme.colors[bgColor])};
     color: ${theme.colors[bgColor]};
   }
 
   &:active {
     background: none;
-    box-shadow: inset 0 0 0 ${theme.spacings.xtiny}
-        ${lighten(0, theme.colors[bgColor])},
-      inset 0 0 ${theme.spacings.huge}
-        ${transparentize(0.95, theme.colors[bgColor])},
+    box-shadow: inset 0 0 0 ${theme.spacings.xtiny} ${lighten(0, theme.colors[bgColor])},
+      inset 0 0 ${theme.spacings.huge} ${transparentize(0.95, theme.colors[bgColor])},
       0 0 ${theme.spacings.xsmall} ${transparentize(0.5, theme.colors[bgColor])};
     color: ${lighten(0, theme.colors[bgColor])};
     transform: translate(1px, 0) scale(0.99, 0.99);
@@ -77,13 +71,12 @@ const buttonSizeSmall = (theme) => css`
 export const ButtonStyles = styled.button`
   ${({ theme, disabled, bgColor, outlined, iconOnly, size = 'normal' }) => css`
     border: none;
-    padding: ${theme.spacings.xxsmall}
-      ${theme.spacings[iconOnly ? 'xsmall' : 'medium']};
+    padding: ${theme.spacings.xxsmall} ${theme.spacings[iconOnly ? 'xsmall' : 'medium']};
     font-size: ${theme.font.sizes.mediumSmall};
     font-weight: ${theme.font.weight.semiBold};
     border-radius: ${theme.radius.small};
-    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out,
-      transform 50ms ease-in-out, color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out, transform 50ms ease-in-out,
+      color 300ms ease-in-out;
     outline: none;
     display: flex;
     align-items: center;

@@ -1,4 +1,4 @@
-import { UserInputError, ValidationError } from "apollo-server";
+import { UserInputError, ValidationError } from 'apollo-server';
 import bcrypt from 'bcrypt';
 
 export const creatingUserFunction = async (values, dataSource) => {
@@ -14,9 +14,7 @@ export const creatingUserFunction = async (values, dataSource) => {
   const foundUser = await userExists(values.userName, dataSource);
 
   if (typeof foundUser !== 'undefined') {
-    throw new ValidationError(
-      `userName ${values.userName} has already been taken`,
-    );
+    throw new ValidationError(`userName ${values.userName} has already been taken`);
   }
 
   return dataSource.post('', {
@@ -25,7 +23,6 @@ export const creatingUserFunction = async (values, dataSource) => {
     createdAt: new Date().toISOString(),
   });
 };
-
 
 const validateUserName = (userName) => {
   const userNameRegExp = /^[a-z]([a-z0-9_.-]+)+$/gi;
@@ -38,8 +35,8 @@ const validateUserName = (userName) => {
 const validateUserPassword = (password) => {
   const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{3,12}$/;
 
-  if(!password.match(passRegex)) {
-    throw new UserInputError('must have at least one number, one lowercase and one uppercase letter')
+  if (!password.match(passRegex)) {
+    throw new UserInputError('must have at least one number, one lowercase and one uppercase letter');
   }
 };
 
@@ -76,14 +73,13 @@ const checkUserFields = async (user, allFieldsRequired = false) => {
 
   if (user.password && !user.passwordHash) {
     const { password } = user;
-    const passwordHash = await bcrypt.hash(password, 2)
-    
-    user['passwordHash'] = passwordHash 
-    delete user['password']
-    console.log(user)
+    const passwordHash = await bcrypt.hash(password, 2);
+
+    user['passwordHash'] = passwordHash;
+    delete user['password'];
+    console.log(user);
   }
 };
-
 
 export const updatingUserFunction = async (id, values, dataSource) => {
   if (!id) {
@@ -91,12 +87,12 @@ export const updatingUserFunction = async (id, values, dataSource) => {
   }
 
   if (values?.userId) {
-    await postExists(values.indexRef, dataSource)
+    await userExists(values.indexRef, dataSource);
   }
 
   if (typeof values.firstName !== 'undefined' || typeof values.lastName !== 'undefined') {
     if (values.lastName === '' || values.lastName === '') {
-      throw new ValidationError('Not accept empty in any names')
+      throw new ValidationError('Not accept empty in any names');
     }
   }
 

@@ -9,12 +9,7 @@ import { Save } from '@styled-icons/material-outlined';
 import P from 'prop-types';
 import { Post } from 'components/Post';
 
-export const PostForm = ({
-  post,
-  formError,
-  somethingLoading,
-  handleSubmitCb,
-}) => {
+export const PostForm = ({ post, formError, somethingLoading, handleSubmitCb }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

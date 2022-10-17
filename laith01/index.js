@@ -1,8 +1,7 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, gql } = require('apollo-server');
 const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
-const { books, products, categories, reviews } = require("./data");
-
+const { books, products, categories, reviews } = require('./data');
 
 const server = new ApolloServer({
   typeDefs,
@@ -11,10 +10,10 @@ const server = new ApolloServer({
     books,
     products,
     categories,
-    reviews
-  }
+    reviews,
+  },
 });
 
 server.listen().then(({ url }) => {
-  console.log("Apollo Server is running " + url);
+  console.log('Apollo Server is running ' + url);
 });

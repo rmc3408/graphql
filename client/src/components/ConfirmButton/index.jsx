@@ -12,19 +12,10 @@ const ConfirmMessage = ({ title, callback, body }) => {
       <Styled.Body>{body}</Styled.Body>
 
       <Styled.ButtonsContainer>
-        <FormButton
-          icon={<Check />}
-          buttonSize="small"
-          bgColor="secondary"
-          clickedFn={() => callback(true)}
-        >
+        <FormButton icon={<Check />} buttonSize="small" bgColor="secondary" clickedFn={() => callback(true)}>
           Confirm
         </FormButton>
-        <FormButton
-          icon={<Cancel />}
-          buttonSize="small"
-          clickedFn={() => callback(false)}
-        >
+        <FormButton icon={<Cancel />} buttonSize="small" clickedFn={() => callback(false)}>
           Cancel
         </FormButton>
       </Styled.ButtonsContainer>
@@ -58,24 +49,16 @@ export const ConfirmButton = ({
 
   const handleClick = () => {
     setButtonDisabled(true);
-    toastId.current = toast.dark(
-      <ConfirmMessage callback={handleUserChoice} title={title} body={body} />,
-      {
-        closeButton: false,
-        closeOnClick: false,
-        draggable: false,
-        autoClose: false,
-      },
-    );
+    toastId.current = toast.dark(<ConfirmMessage callback={handleUserChoice} title={title} body={body} />, {
+      closeButton: false,
+      closeOnClick: false,
+      draggable: false,
+      autoClose: false,
+    });
   };
 
   return (
-    <FormButton
-      icon={<Delete />}
-      bgColor="secondary"
-      clickedFn={handleClick}
-      disabled={buttonDisabled}
-    >
+    <FormButton icon={<Delete />} bgColor="secondary" clickedFn={handleClick} disabled={buttonDisabled}>
       {children}
     </FormButton>
   );

@@ -7,10 +7,7 @@ export const Posts = ({ posts = [], userId = '' }) => {
   return (
     <Styled.Container>
       {posts?.map((post) => (
-        <DefaultContainer
-          key={`posts-post-${post.id}`}
-          id={`posts-post-${post.id}`}
-        >
+        <DefaultContainer key={`posts-post-${post.id}`} id={`posts-post-${post.id}`}>
           <Post {...{ loggedUserId: userId, ...post }} />
         </DefaultContainer>
       ))}

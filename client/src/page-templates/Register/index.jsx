@@ -7,11 +7,7 @@ export const Register = () => {
     <>
       <Helmet title="Register - GraphQL + Apollo-Client - Otávio Miranda" />
 
-      <RegisterForm
-        handleSubmitCb={(sentValues) =>
-          toast.success(<pre>{JSON.stringify(sentValues, null, 2)}</pre>)
-        }
-      />
+      <RegisterForm handleSubmitCb={(sentValues) => toast.success(<pre>{JSON.stringify(sentValues, null, 2)}</pre>)} />
     </>
   );
 };

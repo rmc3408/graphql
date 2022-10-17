@@ -15,14 +15,14 @@ exports.resolvers = {
         newPs = newPs.filter((prod) => {
           let sum = 0;
           let total = 0;
-          reviews.forEach(i => {
+          reviews.forEach((i) => {
             if (i.productId === prod.id) {
-              sum += i.rating
+              sum += i.rating;
               total++;
             }
           });
           //console.log(sum, prod.name, total);
-          return (sum/total) >= args.filter.avgRating
+          return sum / total >= args.filter.avgRating;
         });
       }
       return newPs;

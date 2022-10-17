@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 exports.Mutation = {
   addC: (parent, { input }, { categories }) => {
@@ -41,8 +41,8 @@ exports.Mutation = {
     const idx = categories.findIndex((cat) => cat.id === id);
     categories[idx] = {
       ...categories[idx],
-      ...input
-    }
+      ...input,
+    };
     return categories[idx];
-  }
+  },
 };

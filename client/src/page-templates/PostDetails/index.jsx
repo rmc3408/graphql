@@ -22,30 +22,15 @@ export const PostDetails = () => {
     <>
       <Helmet title="Post Details - GraphQL + Apollo-Client - Otávio Miranda" />
 
-      <Post
-        id={post.id}
-        title={post.title}
-        body={post.body}
-        user={post.user}
-        createdAt={post.createdAt}
-      />
+      <Post id={post.id} title={post.title} body={post.body} user={post.user} createdAt={post.createdAt} />
 
       {/* THIS MAY BE TEMPORARY */}
       <DefaultContainer>
         <div style={{ display: 'flex', gap: '3rem', justifyContent: 'center' }}>
-          <FormButton
-            icon={<Edit />}
-            clickedFn={() => history.push(`/post/${post.id}/edit`)}
-          >
+          <FormButton icon={<Edit />} clickedFn={() => history.push(`/post/${post.id}/edit`)}>
             Edit
           </FormButton>
-          <ConfirmButton
-            onChoice={(choice) =>
-              toast.success(
-                `Your choice is: ${choice ? 'DELETE POST' : 'CANCEL'}`,
-              )
-            }
-          >
+          <ConfirmButton onChoice={(choice) => toast.success(`Your choice is: ${choice ? 'DELETE POST' : 'CANCEL'}`)}>
             Delete
           </ConfirmButton>
         </div>
@@ -64,9 +49,7 @@ export const PostDetails = () => {
         );
       })}
 
-      <CommentForm
-        handleSubmit={(comment) => toast.success(`Your comment is: ${comment}`)}
-      />
+      <CommentForm handleSubmit={(comment) => toast.success(`Your comment is: ${comment}`)} />
     </>
   );
 };

@@ -1,5 +1,5 @@
-import { AuthenticationError, ValidationError } from "apollo-server";
-import { FetchError } from "node-fetch";
+import { AuthenticationError, ValidationError } from 'apollo-server';
+import { FetchError } from 'node-fetch';
 
 export const creatingPostFunction = async (values, dataSource) => {
   const postInfo = await createPostInfo(values, dataSource);
@@ -12,7 +12,6 @@ export const creatingPostFunction = async (values, dataSource) => {
   return await dataSource.post('', { ...postInfo });
 };
 
-
 const userExists = async (userId, dataSource) => {
   try {
     await dataSource.context.dataSources.userApi.get(userId);
@@ -20,7 +19,6 @@ const userExists = async (userId, dataSource) => {
     throw new ValidationError(`User ${userId} does not exist`);
   }
 };
-
 
 const createPostInfo = async (values, dataSource) => {
   const { title, body, userId } = values;
@@ -44,19 +42,18 @@ const createPostInfo = async (values, dataSource) => {
   };
 };
 
-
 export const updatingPostFunction = async (id, values, dataSource) => {
   //GET CACHE
-  //const foundPost = await dataSource.getPost(id); GET CACHE 
-  
+  //const foundPost = await dataSource.getPost(id); GET CACHE
+
   if (!id) throw new ValidationError('Missing post Id');
   values['userId'] = await findPostOwner(id, dataSource);
-  
-  if (values?.userId) await userExists(values.userId, dataSource)
+
+  if (values?.userId) await userExists(values.userId, dataSource);
 
   if (typeof values.title !== 'undefined' || typeof values.body !== 'undefined') {
     if (values.title === '' || values.body === '') {
-      throw new ValidationError('Not accept empty in title or Body')
+      throw new ValidationError('Not accept empty in title or Body');
     }
   }
 
@@ -66,16 +63,16 @@ export const updatingPostFunction = async (id, values, dataSource) => {
 export const deletingPostFunction = async (id, dataSource) => {
   if (!id) throw new ValidationError('Missing post Id');
 
-
   const result = await dataSource.delete(id);
   return !!result;
 };
 
 async function findPostOwner(postId, dataSource) {
-  const foundPost = await dataSource.get(postId, undefined, { cacheOptions: { ttl: 0 }});
-  
+  const foundPost = await dataSource.get(postId, undefined, { cacheOptions: { ttl: 0 } });
+
   if (!foundPost) throw new FetchError('Could not find the post');
-  if (foundPost.userId !== dataSource.context.loggedUserID) throw new AuthenticationError('Cannot update from others users');
-  
+  if (foundPost.userId !== dataSource.context.loggedUserID)
+    throw new AuthenticationError('Cannot update from others users');
+
   return foundPost.userId;
 }

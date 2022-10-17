@@ -11,7 +11,6 @@ import { loginResolvers } from './login/resolvers';
 import { commentTypeDefs } from './comments/type';
 import { commentResolvers } from './comments/resolvers';
 
-
 const rootTypeDefs = gql`
   type Query {
     _empty: Boolean
@@ -53,5 +52,5 @@ export const resolvers = [
   postResolvers,
   filterResolvers,
   loginResolvers,
-  commentResolvers
+  commentResolvers,
 ];

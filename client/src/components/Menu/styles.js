@@ -69,8 +69,8 @@ export const ShowButton = styled.button`
     line-height: 4rem;
     outline: none;
     border: none;
-    transition: left 300ms ease-in-out, opacity 300ms ease-in-out,
-      background 300ms ease-in-out, transform 300ms ease-in-out;
+    transition: left 300ms ease-in-out, opacity 300ms ease-in-out, background 300ms ease-in-out,
+      transform 300ms ease-in-out;
     opacity: ${isVisible ? 0 : 1};
     display: flex;
     align-items: center;
@@ -107,8 +107,7 @@ export const HideButton = styled.button`
     top: 1.5rem;
     left: 27rem;
     opacity: ${isVisible ? 1 : 0};
-    transition: left 300ms ease-in-out, opacity 300ms ease-in-out,
-      transform 300ms ease-in-out;
+    transition: left 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-in-out;
     z-index: ${theme.layers.layer3};
     transform: rotate(0deg);
 
