@@ -44,7 +44,7 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: 'bounded',
   cors: {
-    origin: ['http://localhost:3001'],
+    origin: true,
     credentials: true,
   },
   plugins: [
