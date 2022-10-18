@@ -7,16 +7,13 @@ import { FormInput } from 'components/FormInput';
 import P from 'prop-types';
 import { Loading } from 'components/Loading';
 import { DefaultContainer } from '../DefaultContainer';
-
-const fakeCallback = (v) => v;
+import { loginFormVar } from 'graphql/vars/login';
 
 export const AuthForm = ({
   savedUserName = '',
   loading = false,
   formError = '',
-  handleLogin = fakeCallback,
-  setUserName = fakeCallback,
-  setPassword = fakeCallback,
+  handleLogin = (v) => v,
   formDisabled = true,
 }) => {
   return (
@@ -29,17 +26,17 @@ export const AuthForm = ({
           id="username"
           placeholder="Type your username"
           icon={<Person />}
-          changeFn={(v) => setUserName(v)}
           disabled={loading}
+          textValue={loginFormVar.get().userName}
         />
         <FormInput
           label="password"
           id="password"
           placeholder="Type your password"
           icon={<Password />}
-          changeFn={(v) => setPassword(v)}
           disabled={loading}
           type="password"
+          textValue={loginFormVar.get().password}
         />
 
         {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
@@ -62,8 +59,6 @@ AuthForm.propTypes = {
   savedUserName: P.string,
   loading: P.bool,
   handleLogin: P.func,
-  setUserName: P.func,
-  setPassword: P.func,
   formError: P.string,
   formDisabled: P.bool,
 };

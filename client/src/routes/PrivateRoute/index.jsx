@@ -1,11 +1,13 @@
+import { authVar } from 'graphql/vars/auth';
 import P from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export const PrivateRoute = ({ children = '', component = '', ...rest }) => {
-  let { authData = {} } = {
-    /* ????? */
-  };
+export const PrivateRoute = ({ children, component = '', ...rest }) => {
+  authVar.hydrate();
+  const authData = authVar.get();
+
+  console.log('authdata', authData);
   const isLoggedIn = authData && !!authData.userId;
 
   if (component) {
@@ -13,6 +15,7 @@ export const PrivateRoute = ({ children = '', component = '', ...rest }) => {
   }
 
   const renderFn = ({ location }) => {
+    console.log(isLoggedIn);
     if (isLoggedIn) return children;
 
     const redirectConfig = {

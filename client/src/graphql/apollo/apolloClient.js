@@ -1,8 +1,10 @@
 import 'cross-fetch/polyfill';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 export const apolloClient = new ApolloClient({
-  uri: 'https://om-graph-ql.herokuapp.com/graphql',
+  link: new HttpLink({
+    uri: 'https://om-graph-ql.herokuapp.com/graphql',
+  }),
   cache: new InMemoryCache(),
 });
 
