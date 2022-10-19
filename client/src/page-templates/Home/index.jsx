@@ -6,29 +6,14 @@ import { Helmet } from 'react-helmet';
 import { useQuery, gql } from '@apollo/client';
 import { Loading } from 'components/Loading';
 import { DefaultError } from 'components/DefaultError';
-
-//import GET_POSTS_MOCK from 'mock/posts';
-const GET_POSTS = gql`
-  query GetPosts {
-    getPosts {
-      id
-      user {
-        firstName
-        id
-      }
-      title
-      body
-      createdAt
-    }
-  }
-`;
+import { GQL_POSTS } from 'graphql/queries/post';
 
 export const Home = () => {
-  //const [dataMock] = useState(GET_POSTS_MOCK.data);
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { loading, error, data } = useQuery(GQL_POSTS);
 
   if (loading) return <Loading loading={loading} />;
   if (error) return <DefaultError error={error} />;
+  if (!data) return <h1>empty data</h1>;
 
   return (
     <>
@@ -40,7 +25,7 @@ export const Home = () => {
 
       {/* MOCKED RESULTS */}
       <Styled.PostsContainer>
-        {data.getPosts.slice(-3).map((post) => {
+        {data.getPosts.map((post) => {
           const uniqueKey = `home-post-${post.id}`;
           return (
             <Post
