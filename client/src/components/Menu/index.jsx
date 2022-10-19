@@ -36,7 +36,6 @@ export function MenuMemo({ loading = false, data = {}, handleLogout }) {
                 <Styled.RouterLink to="#" onClick={handleLogout}>
                   Logout
                 </Styled.RouterLink>
-                <ToggleButton title="Enable or disable notifications" onChangeFn={() => {}} />
               </>
             )}
 
@@ -48,7 +47,7 @@ export function MenuMemo({ loading = false, data = {}, handleLogout }) {
             )}
           </Styled.Nav>
 
-          <ToggleButton title="Toggle notifications" onChangeFn={notificationCb} />
+          {!!data?.userId && <ToggleButton title="Toggle notifications" onChangeFn={notificationCb} />}
         </Styled.VerticalCenter>
 
         <Styled.ShowButton isVisible={isVisible} onClick={showMenu}>

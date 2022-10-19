@@ -8,3 +8,9 @@ export const GQL_LOGIN = gql`
     }
   }
 `;
+
+export const GQL_LOGOUT = gql`
+  mutation AUTH_OUT($userName: String!) {
+    signOutUser(userName: $userName)
+  }
+`;

@@ -23,16 +23,13 @@ export const authVar = {
   reset() {
     localStorage.removeItem(LOCAL_AUTH);
     authVarFunction({ ...initialVar });
+    this.hydrate();
   },
   hydrate() {
     let formData = authVar.get();
     let localData = localStorage.getItem(LOCAL_AUTH);
 
-    if (authVar.get().isLoggedBefore && !localData) {
-      authVar.reset();
-    }
-
-    if (JSON.stringify(formData) !== localData) {
+    if (JSON.stringify(formData) !== localData && localData) {
       const { userName, userId, token } = JSON.parse(localData);
       authVar.set({
         userName,
@@ -41,5 +38,6 @@ export const authVar = {
         isLoggedBefore: true,
       });
     }
+    return authVar.get();
   },
 };

@@ -1,10 +1,11 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 import { Heading } from 'components/Heading';
-import { useState } from 'react';
 import { Post } from 'components/Post';
 import { Helmet } from 'react-helmet';
 import { useQuery, gql } from '@apollo/client';
+import { Loading } from 'components/Loading';
+import { DefaultError } from 'components/DefaultError';
 
 //import GET_POSTS_MOCK from 'mock/posts';
 const GET_POSTS = gql`
@@ -26,12 +27,12 @@ export const Home = () => {
   //const [dataMock] = useState(GET_POSTS_MOCK.data);
   const { loading, error, data } = useQuery(GET_POSTS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <Loading loading={loading} />;
+  if (error) return <DefaultError error={error} />;
 
   return (
     <>
-      <Helmet title="Home - GraphQL + Apollo-Client - Otávio Miranda" />
+      <Helmet title="Home - GraphQL + Apollo-Client" />
 
       <Styled.HeadingContainer>
         <Heading>Posts</Heading>
