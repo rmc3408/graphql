@@ -7,13 +7,26 @@ import { useQuery, gql } from '@apollo/client';
 import { Loading } from 'components/Loading';
 import { DefaultError } from 'components/DefaultError';
 import { GQL_POSTS } from 'graphql/queries/post';
+import { FormButton } from 'components/FormButton';
 
 export const Home = () => {
-  const { loading, error, data } = useQuery(GQL_POSTS);
+  const { loading, error, data, fetchMore, previousData } = useQuery(GQL_POSTS, {
+    notifyOnNetworkStatusChange: true,
+  });
 
-  if (loading) return <Loading loading={loading} />;
+  if (loading && !previousData) return <Loading loading={loading} />;
   if (error) return <DefaultError error={error} />;
   if (!data) return <h1>empty data</h1>;
+
+  const handleLoadMore = async () => {
+    if (data.getPosts.length === 0) return;
+
+    await fetchMore({
+      variables: {
+        start: data.getPosts.length,
+      },
+    });
+  };
 
   return (
     <>
@@ -39,10 +52,16 @@ export const Home = () => {
           );
         })}
       </Styled.PostsContainer>
+
+      <Styled.HeadingContainer>
+        <FormButton clickedFn={handleLoadMore} disabled={loading}>
+          {loading ? 'loading' : 'Load More'}
+        </FormButton>
+      </Styled.HeadingContainer>
     </>
   );
 };
 
 Home.propTypes = {
-  children: P.node,
+  children: P.oneOfType([P.node, P.string]),
 };

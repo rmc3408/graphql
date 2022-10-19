@@ -18,7 +18,7 @@ export default {
   ],
   argTypes: {
     children: {
-      type: 'string',
+      type: 'any',
     },
     clickedFn: {
       action: 'clicked',

@@ -4,7 +4,7 @@ import * as Styled from './styles';
 
 export const FormButton = forwardRef(function FormButton(
   {
-    children = '',
+    children,
     disabled = false,
     clickedFn,
     bgColor = 'primary',
