@@ -36,7 +36,7 @@ export const postResolvers = {
       return context.dataSources.postApi.updatePost(args.id, args.data);
     },
     deletePost: async (parent, args, context, info) => {
-      checkIsLoggedIn(context.loggedUserID);
+      //checkIsLoggedIn(context.loggedUserID);
       return context.dataSources.postApi.deletePost(args.id);
     },
   },
