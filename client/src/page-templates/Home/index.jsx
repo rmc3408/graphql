@@ -8,11 +8,13 @@ import { Loading } from 'components/Loading';
 import { DefaultError } from 'components/DefaultError';
 import { GQL_POSTS } from 'graphql/queries/post';
 import { FormButton } from 'components/FormButton';
+import { authVar } from 'graphql/vars/auth';
 
 export const Home = () => {
   const { loading, error, data, fetchMore, previousData } = useQuery(GQL_POSTS, {
     notifyOnNetworkStatusChange: true,
   });
+  const { userId } = authVar.hydrate();
 
   if (loading && !previousData) return <Loading loading={loading} />;
   if (error) return <DefaultError error={error} />;
@@ -48,6 +50,7 @@ export const Home = () => {
               body={post.body}
               user={post.user}
               createdAt={post.createdAt}
+              loggedUserId={userId}
             />
           );
         })}
