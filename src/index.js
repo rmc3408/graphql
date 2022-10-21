@@ -20,13 +20,13 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 app.use(
   cors({
-    origin: ['http://localhost:3001', 'https://studio.apollographql.com', 'https://om-graph-ql.herokuapp.com/graphql'],
+    origin: ['http://localhost:3001', 'https://studio.apollographql.com', 'https://om-graph-ql.herokuapp.com/'],
     credentials: true,
   }),
 );
 
 const httpServer = createServer(app);
-const wsServer = new WebSocketServer({ server: httpServer, path: '/graphql' });
+const wsServer = new WebSocketServer({ server: httpServer, path: '/' });
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const serverCleanup = useServer(
   {
@@ -40,7 +40,7 @@ const serverCleanup = useServer(
     onDisconnect(ctx, code, reason) {
       console.log('Disconnected!');
     },
-    path: '/graphql',
+    path: '/',
     keepAlive: 5000,
   },
   wsServer,

@@ -4,8 +4,7 @@ import { apolloCache } from './cache/cache';
 
 export const apolloClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://om-graph-ql.herokuapp.com/graphql',
-    credentials: 'include',
+    uri: 'https://om-graph-ql.herokuapp.com/',
   }),
   cache: apolloCache,
 });
