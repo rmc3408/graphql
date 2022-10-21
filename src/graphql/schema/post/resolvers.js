@@ -27,7 +27,6 @@ export const postResolvers = {
   },
   Mutation: {
     createPost: async (parent, args, context, info) => {
-      checkIsLoggedIn(context.loggedUserID);
       args.data.userId = context.loggedUserID;
       return context.dataSources.postApi.createPost(args.data);
     },
