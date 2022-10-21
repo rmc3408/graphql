@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 export const context = ({ req, res }) => {
   let loggedUserID = verifyAuthHeaders(req.headers.authorization);
 
-  if (loggedUserID === 'wrong') {
+  if (!loggedUserID || loggedUserID === 'wrong') {
     if (req && req.headers && req.headers.cookie) {
       const { jwtToken } = cookieParser(req.headers.cookie);
       loggedUserID = verifyAuthHeaders('bearer ' + jwtToken);
@@ -19,7 +19,7 @@ export const context = ({ req, res }) => {
 export const contextWS = (auth) => {
   let loggedUserID = verifyAuthHeaders(auth);
 
-  if (loggedUserID === 'wrong') {
+  if (!loggedUserID || loggedUserID === 'wrong') {
     if (auth.includes('jwtToken')) {
       const { jwtToken } = cookieParser(auth);
       loggedUserID = verifyAuthHeaders('bearer ' + jwtToken);

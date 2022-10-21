@@ -23,7 +23,7 @@ const userExists = async (userId, dataSource) => {
 const createPostInfo = async (values, dataSource) => {
   const { title, body, userId } = values;
 
-  //await userExists(userId, dataSource);
+  await userExists(userId, dataSource);
 
   const indexRefPost = await dataSource.get('', {
     _limit: 1,
@@ -43,13 +43,12 @@ const createPostInfo = async (values, dataSource) => {
 };
 
 export const updatingPostFunction = async (id, values, dataSource) => {
-  //GET CACHE
-  //const foundPost = await dataSource.getPost(id); GET CACHE
+  //const foundPost = await dataSource.getPost(id); //GOT CACHE, DO NOT USE IT
 
   if (!id) throw new ValidationError('Missing post Id');
-  values['userId'] = await findPostOwner(id, dataSource);
+  const { userId } = await findPostOwner(id, dataSource);
 
-  if (values?.userId) await userExists(values.userId, dataSource);
+  if (userId) await userExists(userId, dataSource);
 
   if (typeof values.title !== 'undefined' || typeof values.body !== 'undefined') {
     if (values.title === '' || values.body === '') {
@@ -70,8 +69,13 @@ export const deletingPostFunction = async (id, dataSource) => {
 async function findPostOwner(postId, dataSource) {
   const foundPost = await dataSource.get(postId, undefined, { cacheOptions: { ttl: 0 } });
 
-  if (!foundPost) throw new FetchError('Could not find the post');
-  //if (foundPost.userId !== dataSource.context.loggedUserID) throw new AuthenticationError('Cannot update from others users');
+  if (!foundPost) {
+    throw new FetchError('Could not find the post you are looking for.');
+  }
 
-  return foundPost.userId;
+  if (foundPost.userId !== dataSource.context.loggedUserID) {
+    throw new AuthenticationError('You cannot upate this post 😠!');
+  }
+  
+  return foundPost;
 }
