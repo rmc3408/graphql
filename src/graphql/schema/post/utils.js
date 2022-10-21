@@ -23,7 +23,7 @@ const userExists = async (userId, dataSource) => {
 const createPostInfo = async (values, dataSource) => {
   const { title, body, userId } = values;
 
-  await userExists(userId, dataSource);
+  //await userExists(userId, dataSource);
 
   const indexRefPost = await dataSource.get('', {
     _limit: 1,
