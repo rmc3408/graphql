@@ -32,13 +32,9 @@ export const postResolvers = {
       return context.dataSources.postApi.createPost(args.data);
     },
     patchPost: async (parent, args, context, info) => {
-      checkIsLoggedIn(context.loggedUserID);
-      console.log(context.loggedUserID, args);
       return context.dataSources.postApi.updatePost(args.id, args.data);
     },
     deletePost: async (parent, args, context, info) => {
-      checkIsLoggedIn(context.loggedUserID);
-      console.log(context.loggedUserID, args);
       return context.dataSources.postApi.deletePost(args.id);
     },
   },
