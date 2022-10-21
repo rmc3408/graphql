@@ -20,8 +20,8 @@ export async function createLoginUserFunction(data, dataloader) {
     maxAge: 1000 * 60 * 60 * 24 * 12, //5 days
     secure: false, //only https or ssl
     httpOnly: true, //only acess by cookie
-    // path: '/',
-    // samesite: 'strict',
+    //path: '/',
+    samesite: 'none',
   });
 
   return { userId: id, token: newToken };

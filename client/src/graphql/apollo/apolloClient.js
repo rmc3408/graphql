@@ -5,20 +5,7 @@ import { apolloCache } from './cache/cache';
 export const apolloClient = new ApolloClient({
   link: new HttpLink({
     uri: 'https://om-graph-ql.herokuapp.com/graphql',
+    credentials: 'include',
   }),
   cache: apolloCache,
 });
-
-// client
-//   .query({
-//     query: gql`
-//       query ExampleQuery {
-//         _empty
-//         books {
-//           id
-//           title
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));

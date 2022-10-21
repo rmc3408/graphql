@@ -21,7 +21,7 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 20,
     },
   },
   production: {
@@ -39,7 +39,7 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 20,
     },
   },
 };

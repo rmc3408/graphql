@@ -73,7 +73,10 @@ const server = new ApolloServer({
 const PORT = process.env.PORT || 4000;
 
 server.start().then(() => {
-  server.applyMiddleware({ app });
+  server.applyMiddleware({
+    app,
+    cors: { credentials: true, origin: 'https://om-graph-ql.herokuapp.com/graphql' },
+  });
   httpServer.listen(PORT, () => {
     console.log(`🚀 Server at http://localhost:${PORT}${server.graphqlPath}`);
   });
