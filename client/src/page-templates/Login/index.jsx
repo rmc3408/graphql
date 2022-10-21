@@ -40,9 +40,6 @@ export const Login = () => {
     });
   };
 
-  if (loading) return <Loading loading={loading} />;
-  //if (error) return <DefaultError error={error} />;
-
   return (
     <>
       <Helmet title="Login" />

@@ -14,6 +14,7 @@ export const Home = () => {
   const { loading, error, data, fetchMore, previousData } = useQuery(GQL_POSTS, {
     notifyOnNetworkStatusChange: true,
   });
+
   const { userId } = authVar.hydrate();
 
   if (loading && !previousData) return <Loading loading={loading} />;

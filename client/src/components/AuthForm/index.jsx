@@ -43,7 +43,7 @@ export const AuthForm = ({
 
         <Styled.ButtonsContainer>
           <FormButton type="submit" icon={<Login />} disabled={formDisabled || loading}>
-            Sign-in
+            {formDisabled || loading ? 'Checking' : 'Sign-in'}
           </FormButton>
           <span className="or-text">or</span>
           <Styled.RegisterLink to="/register">Register</Styled.RegisterLink>

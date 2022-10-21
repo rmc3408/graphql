@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import { Delete, Edit } from '@styled-icons/material-outlined';
 import { DangerousHtml } from 'components/DangerousHtml';
 import { DefaultError } from 'components/DefaultError';
@@ -32,13 +32,26 @@ export const Post = ({
   const ref = useRef();
   const history = useHistory();
   const [deletePost] = useMutation(GQL_DELETE_POST, {
-    variables: { deletePostId: id },
+    update(cache) {
+      cache.modify({
+        fields: {
+          getPosts(existingPosts, { readField, fieldName }) {
+            //console.log(existingPosts);
+            //console.log(fieldName);
+            return existingPosts.filter((postRef) => {
+              //console.log(readField('id', postRef));
+              return id !== readField('id', postRef);
+            });
+          },
+        },
+      });
+    },
   });
 
   const handleDelete = async () => {
     const shouldDelete = confirm('Sure to delete ?');
     if (shouldDelete) {
-      await deletePost();
+      await deletePost({ variables: { deletePostId: id } });
     }
   };
 

@@ -31,3 +31,23 @@ export const GQL_POSTS = gql`
   ${GQL_FRAGMENT_USER}
   ${GQL_FRAGMENT_COMMENT}
 `;
+
+export const GQL_GET_POST = gql`
+  query GetPost($getPostId: ID!) {
+    getPost(id: $getPostId) {
+      ...post
+      user {
+        ...user
+      }
+      comment {
+        ...comment
+        user {
+          ...user
+        }
+      }
+    }
+  }
+  ${GQL_FRAGMENT_POST}
+  ${GQL_FRAGMENT_USER}
+  ${GQL_FRAGMENT_COMMENT}
+`;
