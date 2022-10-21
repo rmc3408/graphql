@@ -17,11 +17,11 @@ export async function createLoginUserFunction(data, dataloader) {
 
   //Create and save a cookie
   dataloader.context.response.cookie('jwtToken', newToken, {
-    maxAge: 1000 * 60 * 60 * 24 * 5, //5 days
+    maxAge: 1000 * 60 * 60 * 24 * 12, //5 days
     secure: false, //only https or ssl
     httpOnly: true, //only acess by cookie
-    path: '/',
-    samesite: 'strict',
+    // path: '/',
+    // samesite: 'strict',
   });
 
   return { userId: id, token: newToken };

@@ -17,6 +17,7 @@ export const PostEditor = () => {
     onError() {},
     onCompleted() {
       toast.success('Post created!');
+      window.location.href = '/';
     },
   });
 
@@ -39,6 +40,7 @@ export const PostEditor = () => {
         },
       },
     });
+    window.location.href = '/';
   };
 
   const handleCreate = async (value) => {
