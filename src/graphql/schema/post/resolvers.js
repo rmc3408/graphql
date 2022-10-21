@@ -27,13 +27,16 @@ export const postResolvers = {
   },
   Mutation: {
     createPost: async (parent, args, context, info) => {
+      checkIsLoggedIn(context.loggedUserID);
       args.data.userId = context.loggedUserID;
       return context.dataSources.postApi.createPost(args.data);
     },
     patchPost: async (parent, args, context, info) => {
+      checkIsLoggedIn(context.loggedUserID);
       return context.dataSources.postApi.updatePost(args.id, args.data);
     },
     deletePost: async (parent, args, context, info) => {
+      checkIsLoggedIn(context.loggedUserID);
       return context.dataSources.postApi.deletePost(args.id);
     },
   },
