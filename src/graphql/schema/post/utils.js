@@ -23,7 +23,7 @@ const userExists = async (userId, dataSource) => {
 const createPostInfo = async (values, dataSource) => {
   const { title, body, userId } = values;
 
-  await userExists(userId, dataSource);
+  //await userExists(userId, dataSource);
 
   const indexRefPost = await dataSource.get('', {
     _limit: 1,
@@ -48,7 +48,7 @@ export const updatingPostFunction = async (id, values, dataSource) => {
   if (!id) throw new ValidationError('Missing post Id');
   const { userId } = await findPostOwner(id, dataSource);
 
-  if (userId) await userExists(userId, dataSource);
+  //if (userId) await userExists(userId, dataSource);
 
   if (typeof values.title !== 'undefined' || typeof values.body !== 'undefined') {
     if (values.title === '' || values.body === '') {
@@ -73,9 +73,9 @@ async function findPostOwner(postId, dataSource) {
     throw new FetchError('Could not find the post you are looking for.');
   }
 
-  if (foundPost.userId !== dataSource.context.loggedUserID) {
-    throw new AuthenticationError('You cannot upate this post 😠!');
-  }
-  
+  // if (foundPost.userId !== dataSource.context.loggedUserID) {
+  //   throw new AuthenticationError('You cannot upate this post 😠!');
+  // }
+
   return foundPost;
 }
