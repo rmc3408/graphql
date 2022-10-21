@@ -10,6 +10,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import express from 'express';
 import { createServer } from 'http';
 import { WebSocketServer } from 'ws';
+import cors from 'cors';
 import { useServer } from 'graphql-ws/lib/use/ws';
 
 const knexfile = require('../knexfile');
@@ -17,6 +18,13 @@ const knexfile = require('../knexfile');
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
+app.use(
+  cors({
+    origin: ['http://localhost:3001', 'https://studio.apollographql.com', 'https://om-graph-ql.herokuapp.com/graphql'],
+    credentials: true,
+  }),
+);
+
 const httpServer = createServer(app);
 const wsServer = new WebSocketServer({ server: httpServer, path: '/graphql' });
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -43,10 +51,6 @@ const server = new ApolloServer({
   context,
   csrfPrevention: true,
   cache: 'bounded',
-  cors: {
-    origin: ['http://localhost', 'https://studio.apollographql.com', 'https://om-graph-ql.herokuapp.com/graphql'],
-    credentials: true,
-  },
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
     {
