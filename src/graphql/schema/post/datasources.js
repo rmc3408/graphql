@@ -20,11 +20,11 @@ class PostsApi extends RESTDataSource {
   }
 
   async getPosts(url = {}) {
-    return this.get('', url, { cacheOptions: { ttl: 60 } });
+    return this.get('', url, { cacheOptions: { ttl: 5 } });
   }
 
   async getPost(id) {
-    return this.get(id, undefined, { cacheOptions: { ttl: 60 } });
+    return this.get(id, undefined, { cacheOptions: { ttl: 5 } });
   }
 
   async createPost(data) {

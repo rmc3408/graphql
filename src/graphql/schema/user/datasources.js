@@ -20,11 +20,11 @@ class UsersApi extends RESTDataSource {
   }
 
   async getUsers(url = {}) {
-    return this.get('', url, { cacheOptions: { ttl: 60 } });
+    return this.get('', url, { cacheOptions: { ttl: 10 } });
   }
 
   async getUser(id) {
-    return this.get(id, undefined, { cacheOptions: { ttl: 60 } });
+    return this.get(id, undefined, { cacheOptions: { ttl: 10 } });
   }
 
   async createUser(data) {

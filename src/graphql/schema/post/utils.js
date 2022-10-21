@@ -71,8 +71,7 @@ async function findPostOwner(postId, dataSource) {
   const foundPost = await dataSource.get(postId, undefined, { cacheOptions: { ttl: 0 } });
 
   if (!foundPost) throw new FetchError('Could not find the post');
-  if (foundPost.userId !== dataSource.context.loggedUserID)
-    throw new AuthenticationError('Cannot update from others users');
+  if (foundPost.userId !== dataSource.context.loggedUserID) throw new AuthenticationError('Cannot update from others users');
 
   return foundPost.userId;
 }
