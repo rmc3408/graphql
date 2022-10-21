@@ -15,9 +15,9 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
-  //uri: 'https://om-graph-ql.herokuapp.com/graphql',
-  credentials: 'same-origin',
+  //uri: 'http://localhost:4000/graphql',
+  uri: 'https://om-graph-ql.herokuapp.com/graphql',
+  credentials: 'include',
 });
 
 export const apolloClient = new ApolloClient({

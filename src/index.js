@@ -44,10 +44,8 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: 'bounded',
   cors: {
-    //origin: true,
     credentials: true,
-    origin: ['http://localhost'],
-    //origin: ['https://om-graph-ql.herokuapp.com/graphql'],
+    origin: ['http://localhost', 'https://om-graph-ql.herokuapp.com/graphql'],
   },
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
