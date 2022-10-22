@@ -11,8 +11,9 @@ export const CommentForm = ({ handleSubmit, buttonDisabled = false }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const txt = e.target.commentBody.value;
 
-    if (handleSubmit) {
+    if (handleSubmit && txt.length > 5) {
       handleSubmit(comment, () => setComment(''));
     }
   };
