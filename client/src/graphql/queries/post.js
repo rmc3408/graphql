@@ -20,9 +20,6 @@ export const GQL_POSTS = gql`
       }
       comment {
         ...comment
-        user {
-          ...user
-        }
       }
     }
   }
@@ -41,9 +38,6 @@ export const GQL_GET_POST = gql`
       }
       comment {
         ...comment
-        user {
-          ...user
-        }
       }
     }
   }

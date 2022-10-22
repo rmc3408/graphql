@@ -16,7 +16,7 @@ export const apolloCache = new InMemoryCache({
       fields: {
         numberOfcomments(nonExistingData, arg) {
           //console.log(arg);
-          console.log('NumberComments', arg.readField('comment'));
+          //console.log('NumberComments', arg.readField('comment'));
           return arg.readField('comment').length;
         },
       },
