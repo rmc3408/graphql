@@ -1,33 +1,49 @@
 import { PostForm } from '../../components/PostForm';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { GQL_GET_POST } from 'graphql/queries/post';
 import { useEffect } from 'react';
 import { Loading } from 'components/Loading';
 import { GQL_CREATE_POST, GQL_UPDATE_POST } from 'graphql/mutations/crud-post';
+import { GQL_FRAGMENT_POST } from 'graphql/fragments/post';
 
 export const PostEditor = () => {
   const { id } = useParams();
+  const history = useHistory();
 
   const [getPost, { loading, error: getError, data }] = useLazyQuery(GQL_GET_POST);
   const [updatePost, { error: updateError }] = useMutation(GQL_UPDATE_POST);
   const [createPost, { error: createError }] = useMutation(GQL_CREATE_POST, {
     onError() {},
-    onCompleted() {
+    onCompleted(data) {
       toast.success('Post created!');
+      history.push(`/post/${data.createPost.id}/edit`);
+    },
+    update(cache, { data }) {
+      const newPost = cache.writeFragment({
+        fragment: GQL_FRAGMENT_POST,
+        data: data.createPost,
+      });
+
+      cache.modify({
+        fields: {
+          getPosts(existing = []) {
+            return [newPost, ...existing];
+          },
+        },
+      });
     },
   });
 
   const handleSubmit = (value) => {
-    toast.success(<pre>{JSON.stringify(value, null, 2)}</pre>);
+    //toast.success(<pre>{JSON.stringify(value, null, 2)}</pre>);
     if (id) {
       handleUpdate(value);
     } else {
       handleCreate(value);
     }
-    window.location.href = '/';
   };
 
   const handleUpdate = async (value) => {
