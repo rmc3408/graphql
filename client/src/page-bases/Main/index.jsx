@@ -13,13 +13,17 @@ export const Main = ({ children }) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    logoutUser({
-      variables: {
-        userName: dataLogin.userId,
-      },
-    });
-    authVar.reset();
-    window.location.href = '/login';
+    try {
+      logoutUser({
+        variables: {
+          userName: dataLogin.userId,
+        },
+      });
+      authVar.reset();
+      window.location.href = '/login';
+    } catch (error) {
+      // catch
+    }
   };
 
   return (
