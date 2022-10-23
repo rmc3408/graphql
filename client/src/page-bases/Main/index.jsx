@@ -3,12 +3,26 @@ import { Footer } from 'components/Footer';
 import { Menu } from 'components/Menu';
 import { authVar } from 'graphql/vars/auth';
 import { GQL_LOGOUT } from 'graphql/mutations/auth';
-import { useMutation } from '@apollo/client';
+import { useMutation, useSubscription } from '@apollo/client';
+import { GQL_SUB_CREATE_COMMENT } from 'graphql/subscription/comment';
+import { toast } from 'react-toastify';
+import { CommentNotification } from 'components/CommentNotification';
 
 export const Main = ({ children }) => {
   let dataLogin = authVar.hydrate();
   const [logoutUser] = useMutation(GQL_LOGOUT, {
     errorPolicy: 'all',
+  });
+  useSubscription(GQL_SUB_CREATE_COMMENT, {
+    onData({ data, error, loading }) {
+      const comment = data.data?.onCreateComment;
+
+      return toast.dark(<CommentNotification comment={comment} />, {
+        autoClose: false,
+        position: 'bottom-right',
+        hideProgressBar: true,
+      });
+    },
   });
 
   const handleLogout = async (e) => {

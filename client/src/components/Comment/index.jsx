@@ -15,7 +15,7 @@ export const Comment = ({ comment, user, createdAt }) => {
         <Styled.CommentBody>{comment}</Styled.CommentBody>
         <Styled.CommentMeta>
           <span>At</span>
-          <Styled.CommentMetaItem>{dateFormatter(createdAt)}</Styled.CommentMetaItem>
+          <Styled.CommentMetaItem>{createdAt}</Styled.CommentMetaItem>
         </Styled.CommentMeta>
       </DefaultContainer>
     </Styled.Container>
