@@ -1,5 +1,4 @@
-import { makeVar, useReactiveVar } from '@apollo/client';
-import { loginFormVar } from './login';
+import { makeVar } from '@apollo/client';
 
 const LOCAL_AUTH = '__auth__';
 const initialVar = {

@@ -6,14 +6,13 @@ import * as Styled from './styles';
 export const CommentNotification = ({ comment }) => {
   const auth = authVar.hydrate();
 
-  console.log(comment);
   return (
     <Styled.ToastNotificationContainer>
       <p>
         <strong>{auth.userName}</strong> comentou:
       </p>
       <p>
-        {comment.slice(0, 12)} {comment.length > 12 && '...'}
+        {comment.comment.slice(0, 12)} {comment.comment.length > 12 && '...'}
       </p>
     </Styled.ToastNotificationContainer>
   );

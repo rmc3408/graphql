@@ -5,12 +5,16 @@ import * as Styled from './styles';
 import P from 'prop-types';
 import { memo, useCallback, useState } from 'react';
 import { toast } from 'react-toastify';
+import { notificationVar } from 'graphql/vars/notification';
 
 export function MenuMemo({ loading = false, data = {}, handleLogout }) {
   const [isVisible, setIsVisible] = useState(false);
+
   const notificationCb = useCallback((status) => {
     toast.success(`Notifications are ${status ? 'ON' : 'OFF'}`);
+    notificationVar.set(status);
   }, []);
+
   const hideMenu = () => setIsVisible(false);
   const showMenu = () => setIsVisible(true);
 
@@ -47,7 +51,9 @@ export function MenuMemo({ loading = false, data = {}, handleLogout }) {
             )}
           </Styled.Nav>
 
-          {!!data?.userId && <ToggleButton title="Toggle notifications" onChangeFn={notificationCb} />}
+          {!!data?.userId && (
+            <ToggleButton title="Toggle notifications" onChangeFn={notificationCb} state={notificationVar.get()} />
+          )}
         </Styled.VerticalCenter>
 
         <Styled.ShowButton isVisible={isVisible} onClick={showMenu}>
