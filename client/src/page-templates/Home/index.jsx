@@ -13,6 +13,9 @@ import { authVar } from 'graphql/vars/auth';
 export const Home = () => {
   const { loading, error, data, fetchMore, previousData } = useQuery(GQL_POSTS, {
     notifyOnNetworkStatusChange: true,
+    context: {
+      fromHomeComponent: 'Home',
+    },
   });
 
   const { userId } = authVar.hydrate();

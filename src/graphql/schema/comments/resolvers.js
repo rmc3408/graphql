@@ -23,7 +23,6 @@ export const commentResolvers = {
   },
   Mutation: {
     createComment: async (parent, args, context, info) => {
-      checkIsLoggedIn(context.loggedUserID);
       const newComment = { userId: context.loggedUserID, ...args.data };
       return await context.dataSources.commentApi.createCommentFunction(newComment);
     },
@@ -32,7 +31,6 @@ export const commentResolvers = {
     onCreatedComment: {
       subscribe: withFilter(
         (parent, args, context) => {
-          checkIsLoggedIn(context.loggedUserID);
           return pubSub.asyncIterator(['ON_CREATED', 'ON_EXIST']);
         },
         (payload, args, context) => {
